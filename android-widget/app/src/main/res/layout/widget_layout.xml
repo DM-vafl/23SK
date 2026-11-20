@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="14dp"
+    android:padding="12dp"
     android:background="@drawable/widget_background">
 
     <LinearLayout
@@ -18,9 +18,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="23СК · ЗАМЕНЫ"
-            android:textColor="#93627B"
-            android:textSize="12sp"
+            android:text="23СК  /  NIGHT CITY"
+            android:textColor="#E8D9F5"
+            android:textSize="11sp"
+            android:letterSpacing="0.08"
             android:textStyle="bold" />
 
         <TextView
@@ -29,39 +30,47 @@
             android:layout_height="30dp"
             android:gravity="center"
             android:text="↻"
-            android:textColor="#B96F91"
+            android:textColor="#FF9BB9"
             android:textSize="22sp" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/widget_scene"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:layout_marginTop="3dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/night_scene" />
 
     <TextView
         android:id="@+id/widget_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="7dp"
         android:text="Загружаем расписание…"
-        android:textColor="#A58A99"
-        android:textSize="11sp" />
+        android:textColor="#AEB6D2"
+        android:textSize="10sp" />
 
     <TextView
         android:id="@+id/widget_pair"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="5dp"
         android:text="23СК"
-        android:textColor="#B66D8D"
-        android:textSize="11sp"
+        android:textColor="#F4B6D0"
+        android:textSize="10sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/widget_from"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="2dp"
         android:maxLines="1"
         android:ellipsize="end"
         android:text="Проверяем замены…"
-        android:textColor="#65475A"
-        android:textSize="14sp"
+        android:textColor="#F4EAF7"
+        android:textSize="13sp"
         android:textStyle="bold" />
 
     <TextView
@@ -71,8 +80,8 @@
         android:layout_marginTop="1dp"
         android:maxLines="1"
         android:ellipsize="end"
-        android:textColor="#8A526D"
-        android:textSize="13sp" />
+        android:textColor="#FFC18E"
+        android:textSize="12sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -86,14 +95,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="#9A7185"
-            android:textSize="11sp" />
+            android:textColor="#B9B7D0"
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/widget_updated"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#B69AA9"
-            android:textSize="10sp" />
+            android:textColor="#858DAA"
+            android:textSize="9sp" />
     </LinearLayout>
 </LinearLayout>
