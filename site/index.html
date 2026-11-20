@@ -143,62 +143,93 @@
     .photo-frame{border-color:#302b46;background:#171e32}.story-count{color:#d3a4cf}
     .story-text,.final-note p{color:#d0c4dc}.final-note{border-color:#51415e;background:#211e35}
     .dot-page{background:#655275}.dot-page.active{background:#ef8eae}
-    .dino-travel{animation:dino-journey 18s linear infinite;transform-box:view-box;will-change:transform}
-    .dino-torso{transform-box:fill-box;transform-origin:48% 72%;animation:torso-life 3.8s ease-in-out infinite;will-change:transform}
-    .dino-leg-a,.dino-leg-b{transform-box:fill-box;transform-origin:50% 8%;animation:leg-cycle 18s linear infinite;will-change:transform}
-    .dino-leg-b{animation-delay:-.18s}
-    .dino-tail{transform-box:fill-box;transform-origin:98% 52%;animation:tail-swish 3.2s ease-in-out infinite alternate;will-change:transform}
-    .dino-head{transform-box:fill-box;transform-origin:15% 78%;animation:head-nod 4.2s ease-in-out infinite;will-change:transform}
-    .dino-jaw{transform-box:fill-box;transform-origin:5% 10%;animation:jaw-open 6s ease-in-out infinite}
-    .dino-arm{transform-box:fill-box;transform-origin:12% 20%;animation:arm-swing 2.2s ease-in-out infinite alternate;will-change:transform}
-    .dino-spines{transform-box:fill-box;transform-origin:10% 90%;animation:spine-flex 3.8s ease-in-out infinite}
-    .flame{transform-box:fill-box;transform-origin:0 50%;animation:fire-breathe .8s ease-in-out infinite alternate}
-    .flame-spark{animation:spark-drift 1.8s ease-out infinite}
-    .window-fire{animation:window-blaze 4.8s ease-in-out infinite alternate;transform-origin:center}
-    .window-light{animation:window-flicker 5s ease-in-out infinite alternate}
-    .star{animation:star-twinkle 3.5s ease-in-out infinite alternate}
-    @keyframes dino-journey{
-      0%,8%{transform:translate(0px,0px)}
-      14%{transform:translate(34px,0px)}
-      20%{transform:translate(80px,0px)}
-      26%{transform:translate(130px,-2px)}
-      32%{transform:translate(180px,-10px)}
-      38%{transform:translate(235px,-35px)}
-      44%{transform:translate(290px,-70px)}
-      50%{transform:translate(340px,-108px)}
-      55%,60%{transform:translate(355px,-119px)}
-      65%{transform:translate(340px,-106px)}
-      70%{transform:translate(295px,-70px)}
-      76%{transform:translate(220px,-24px)}
-      82%{transform:translate(130px,-3px)}
-      89%{transform:translate(55px,0px)}
-      95%,100%{transform:translate(0px,0px)}
+    .dino-travel{animation:dino-visibility 26s linear infinite}
+    .dino-torso{transform-box:fill-box;transform-origin:48% 72%;animation:torso-life 4.2s ease-in-out infinite;will-change:transform}
+    .dino-neck{transform-box:view-box;transform-origin:475px 203px;animation:neck-life 4.8s ease-in-out infinite;will-change:transform}
+    .dino-head{transform-box:view-box;transform-origin:530px 176px;animation:head-nod 4.6s ease-in-out infinite;will-change:transform}
+    .dino-eye{transform-box:view-box;transform-origin:566px 150px;animation:eye-blink 6.2s ease-in-out infinite}
+    .dino-jaw{transform-box:view-box;transform-origin:581px 184px;animation:jaw-open 6.5s ease-in-out infinite}
+    .dino-leg-a{transform-box:view-box;transform-origin:403px 250px;animation:leg-run 1.15s ease-in-out infinite;will-change:transform}
+    .dino-leg-b{transform-box:view-box;transform-origin:466px 251px;animation:leg-run 1.15s ease-in-out -0.575s infinite;will-change:transform}
+    .dino-tail{transform-box:view-box;transform-origin:393px 237px;animation:tail-swish 3.2s ease-in-out infinite alternate;will-change:transform}
+    .dino-arm{transform-box:view-box;transform-origin:500px 208px;animation:arm-swing 1.55s ease-in-out infinite alternate;will-change:transform}
+    .dino-arm-back{transform-origin:462px 210px;animation-delay:-.78s}
+    .dino-spines{stroke-linejoin:round}
+    .flame{transform-box:view-box;transform-origin:617px 163px;animation:fire-breathe 1.05s ease-in-out infinite alternate}
+    .flame-spark{animation:spark-drift 1.9s ease-out infinite}
+    .flame-spark:nth-of-type(2){animation-delay:-.95s}
+    .window-light{animation:window-glow 5.8s ease-in-out infinite alternate}
+    .star{animation:star-twinkle 3.8s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+    .jump-shadow{transform-box:view-box;transform-origin:205px 251px;animation:shadow-follow 26s linear infinite}
+    @keyframes dino-visibility{
+      0%,2%{opacity:0}
+      6%,82%{opacity:1}
+      92%,100%{opacity:0}
     }
     @keyframes torso-life{
-      0%,100%{transform:rotate(-.6deg) translateY(0)}
-      25%{transform:rotate(.8deg) translateY(-1.5px)}
-      50%{transform:rotate(-.8deg) translateY(0)}
-      75%{transform:rotate(.6deg) translateY(-1px)}
+      0%,100%{transform:translateY(0) rotate(-.35deg) scale(1)}
+      25%{transform:translateY(-1.6px) rotate(.45deg) scale(1.006, .995)}
+      50%{transform:translateY(0) rotate(-.35deg) scale(1)}
+      75%{transform:translateY(-1px) rotate(.3deg) scale(1.004, .997)}
     }
-    @keyframes leg-cycle{
-      0%,8%,55%,60%,95%,100%{transform:rotate(0deg)}
-      14%,20%,26%,32%{transform:rotate(-10deg)}
-      17%,23%,29%,35%{transform:rotate(12deg)}
-      38%,44%,50%{transform:rotate(-18deg)}
-      65%,70%,76%,82%,89%{transform:rotate(8deg)}
+    @keyframes neck-life{
+      0%,100%{transform:rotate(-.5deg)}
+      50%{transform:rotate(.7deg)}
     }
-    @keyframes tail-swish{from{transform:rotate(-5deg)}to{transform:rotate(5deg)}}
-    @keyframes head-nod{0%,100%{transform:rotate(0)}25%{transform:rotate(-2deg)}50%{transform:rotate(1.5deg)}75%{transform:rotate(-1deg)}}
-    @keyframes jaw-open{0%,35%,100%{transform:rotate(0)}40%,48%{transform:rotate(10deg)}}
-    @keyframes arm-swing{from{transform:rotate(-5deg)}to{transform:rotate(7deg)}}
-    @keyframes spine-flex{0%,100%{transform:skewY(0)}50%{transform:skewY(-.6deg)}}
-    @keyframes fire-breathe{from{opacity:.65;scale:.92 .96}to{opacity:1;scale:1.06 1.03}}
-    @keyframes spark-drift{0%{opacity:0;transform:translate(0,0) scale(.5)}25%{opacity:1}100%{opacity:0;transform:translate(22px,-13px) scale(0)}}
-    @keyframes window-blaze{from{opacity:.55;filter:brightness(.95)}to{opacity:.9;filter:brightness(1.15)}}
-    @keyframes window-flicker{from{opacity:.72}to{opacity:1}}
-    @keyframes star-twinkle{from{opacity:.45}to{opacity:.95}}
-    @keyframes shadow-jump{0%,30%,82%,100%{transform:scaleX(1);opacity:.35}45%,60%{transform:scaleX(.72);opacity:.2}72%{transform:scaleX(.9);opacity:.3}}
-    @media(prefers-reduced-motion:reduce){.dino-travel,.dino-torso,.dino-leg-a,.dino-leg-b,.dino-tail,.dino-head,.dino-jaw,.dino-arm,.dino-spines,.flame,.flame-spark,.window-fire,.window-light,.star{animation-duration:30s!important;animation-iteration-count:1!important}}
+    @keyframes head-nod{
+      0%,100%{transform:rotate(0deg)}
+      30%{transform:rotate(-1.4deg)}
+      65%{transform:rotate(1.1deg)}
+    }
+    @keyframes eye-blink{
+      0%,43%,47%,100%{transform:scaleY(1)}
+      45%{transform:scaleY(.08)}
+    }
+    @keyframes jaw-open{
+      0%,35%,100%{transform:rotate(0deg)}
+      41%,48%{transform:rotate(7deg)}
+    }
+    @keyframes leg-run{
+      0%,100%{transform:rotate(-11deg)}
+      50%{transform:rotate(12deg)}
+    }
+    @keyframes tail-swish{
+      from{transform:rotate(-5deg)}
+      to{transform:rotate(6deg)}
+    }
+    @keyframes arm-swing{
+      from{transform:rotate(-5deg)}
+      to{transform:rotate(7deg)}
+    }
+    @keyframes fire-breathe{
+      from{opacity:.68;scale:.94 .97}
+      to{opacity:1;scale:1.05 1.03}
+    }
+    @keyframes spark-drift{
+      0%{opacity:0;transform:translate(0,0) scale(.5)}
+      25%{opacity:1}
+      100%{opacity:0;transform:translate(22px,-13px) scale(0)}
+    }
+    @keyframes window-glow{
+      from{opacity:.68;filter:brightness(.94)}
+      to{opacity:1;filter:brightness(1.12)}
+    }
+    @keyframes star-twinkle{
+      from{opacity:.4}
+      to{opacity:.95}
+    }
+    @keyframes shadow-follow{
+      0%,2%{opacity:0;transform:translateX(0) scale(1)}
+      8%,32%{opacity:.32;transform:translateX(0) scale(1)}
+      45%{opacity:.22;transform:translateX(250px) scale(.72)}
+      58%,66%{opacity:.12;transform:translateX(355px) scale(.42)}
+      84%,100%{opacity:0;transform:translateX(610px) scale(.22)}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .dino-travel,.dino-torso,.dino-neck,.dino-head,.dino-eye,.dino-jaw,
+      .dino-leg-a,.dino-leg-b,.dino-tail,.dino-arm,.flame,.flame-spark,
+      .window-light,.star,.jump-shadow{animation:none!important}
+    }
     @media(max-width:650px){
       .page{width:min(100% - 24px,540px);padding-top:16px}.top{margin-bottom:15px}
       .hero{grid-template-columns:1fr;gap:15px;padding:22px;border-radius:22px}
@@ -228,7 +259,7 @@
       .photo-frame{height:min(40dvh,300px);min-height:165px}
       .story-controls{gap:5px}.story-controls button{padding:0 9px;min-height:39px;font-size:11px}
     }
-    @media(prefers-reduced-motion:reduce){.dino-walk,.dino-bob,.dino-leg-a,.dino-leg-b,.dino-tail,.dino-arm,.fire-core,.window-light,.star,{animation:none!important}}
+    @media(prefers-reduced-motion:reduce){.dino-travel,.dino-torso,.dino-neck,.dino-head,.dino-eye,.dino-jaw,.dino-leg-a,.dino-leg-b,.dino-tail,.dino-arm,.flame,.flame-spark,.window-light,.star,.jump-shadow{animation:none!important}}
 </style>
 </head>
 <body>
@@ -314,7 +345,7 @@
         </defs>
         <rect width="760" height="270" fill="url(#skyDeep)"/>
         <circle cx="660" cy="42" r="23" fill="#f5dfb4" opacity=".9"/><circle cx="671" cy="33" r="22" fill="#222842"/>
-        <g fill="#e9ecff" opacity=".85"><circle cx="66" cy="37" r="1.8"/><circle cx="151" cy="68" r="1.2"/><circle cx="276" cy="27" r="1.6"/><circle cx="425" cy="57" r="1.5"/><circle cx="710" cy="88" r="1.7"/><circle cx="602" cy="35" r="1.2"/></g>
+        <g class="star" fill="#e9ecff" opacity=".85"><circle cx="66" cy="37" r="1.8"/><circle cx="151" cy="68" r="1.2"/><circle cx="276" cy="27" r="1.6"/><circle cx="425" cy="57" r="1.5"/><circle cx="710" cy="88" r="1.7"/><circle cx="602" cy="35" r="1.2"/></g>
         <!-- Distant skyline -->
         <g fill="#17243b">
           <path d="M0 228V148h40v-25h35v105Z"/><path d="M78 228V111h52v-33h34v150Z"/>
@@ -324,38 +355,25 @@
         <g fill="url(#windows)" opacity=".8">
           <path d="M14 164h5v10h-5zm14 0h5v10h-5zm61-38h5v10h-5zm15 0h5v10h-5zm15 0h5v10h-5zm58 30h5v10h-5zm15 0h5v10h-5zm81 17h5v10h-5zm15 0h5v10h-5zm76-48h5v10h-5zm15 0h5v10h-5zm76 29h5v10h-5zm15 0h5v10h-5z"/>
         </g>
-        <!-- Foreground office tower -->
-        <g>
-          <path d="M520 270V78L563 34 606 78V270Z" fill="url(#towerGlass)" stroke="#a9bbd8" stroke-width="2.5"/>
-          <path d="M520 78L563 34 606 78" fill="none" stroke="#d5e0f3" stroke-width="3"/>
-          <path d="M526 83H600V269H526Z" fill="url(#glassGrid)" opacity=".45"/>
-          <g fill="#ffcf83" opacity=".92">
-            <rect x="533" y="91" width="17" height="19" rx="2"/><rect x="559" y="91" width="17" height="19" rx="2"/>
-            <rect x="533" y="122" width="17" height="19" rx="2"/><rect x="559" y="122" width="17" height="19" rx="2"/>
-            <rect x="533" y="153" width="17" height="19" rx="2"/><rect x="559" y="153" width="17" height="19" rx="2"/>
-            <rect x="533" y="184" width="17" height="19" rx="2"/><rect x="559" y="184" width="17" height="19" rx="2"/>
-            <rect x="533" y="215" width="17" height="19" rx="2"/><rect x="559" y="215" width="17" height="19" rx="2"/>
-            <rect x="533" y="246" width="17" height="19" rx="2"/><rect x="559" y="246" width="17" height="19" rx="2"/>
+        <!-- Простое здание: ровный фасад и аккуратные светящиеся окна -->
+        <g id="officeTower">
+          <path d="M520 270V137H606V270Z" fill="url(#towerGlass)" stroke="#a9bbd8" stroke-width="2"/>
+          <path d="M527 144H599V270H527Z" fill="url(#glassGrid)" opacity=".28"/>
+          <g class="window-light" fill="url(#windows)">
+            <rect x="534" y="151" width="17" height="13" rx="2"/>
+            <rect x="561" y="151" width="17" height="13" rx="2"/>
+            <rect x="534" y="177" width="17" height="13" rx="2" opacity=".55"/>
+            <rect x="561" y="177" width="17" height="13" rx="2"/>
+            <rect x="534" y="203" width="17" height="13" rx="2"/>
+            <rect x="561" y="203" width="17" height="13" rx="2" opacity=".5"/>
+            <rect x="534" y="229" width="17" height="13" rx="2"/>
+            <rect x="561" y="229" width="17" height="13" rx="2"/>
+            <rect x="534" y="255" width="17" height="11" rx="2" opacity=".55"/>
+            <rect x="561" y="255" width="17" height="11" rx="2"/>
           </g>
-          <g fill="#182238" stroke="#182238" stroke-width="2">
-            <g transform="translate(537 91)"><circle cx="5" cy="5" r="3"/><path d="M5 9v8m-4-4h8m-7 7-2 3m7-3 2 3" fill="none" stroke-width="2"/></g>
-            <g transform="translate(563 122)"><circle cx="5" cy="5" r="3"/><path d="M5 9v8m-4-4h8m-7 7-2 3m7-3 2 3" fill="none" stroke-width="2"/></g>
-            <g transform="translate(537 184)"><circle cx="5" cy="5" r="3"/><path d="M5 9v8m-4-4h8m-7 7-2 3m7-3 2 3" fill="none" stroke-width="2"/></g>
-            <g transform="translate(563 215)"><circle cx="5" cy="5" r="3"/><path d="M5 9v8m-4-4h8m-7 7-2 3m7-3 2 3" fill="none" stroke-width="2"/></g>
-          </g>
-          <g class="window-fire" fill="#ff9a55" filter="url(#softGlow)">
-            <path d="M558 184q-9-11 0-19 1 8 7 10 5-8 6-13 10 14 1 22Z"/>
-            <path d="M532 246q-7-9 0-16 2 7 6 8 4-6 5-10 8 12 1 18Z"/>
-          </g>
-          <g stroke="#c4d5ec" stroke-opacity=".18" fill="none"><path d="M530 115H596M530 146H596M530 177H596M530 208H596M530 239H596"/></g>
-          <path d="M563 34V16" stroke="#e8d5aa" stroke-width="3" filter="url(#softGlow)"/>
-          <path d="M514 270H612" stroke="#b7c7df" stroke-width="3"/>
-          <!-- Small rooftop service ledge: the dinosaur lands here, not in mid-air -->
-          <path d="M404 140H526L520 149H411Z" fill="#667b9d" stroke="#b8c9e2" stroke-width="2"/>
-          <path d="M416 149v12m90-12v12" stroke="#879bb9" stroke-width="4"/>
-          <path d="M408 139H522" stroke="#ffe0a0" stroke-width="3" filter="url(#softGlow)"/>
-          <path d="M530 84V260M596 84V260" stroke="#d1dff1" stroke-opacity=".22" stroke-width="2"/>
-          <path d="M536 101h8m-8 31h8m-8 31h8m-8 31h8m-8 31h8" stroke="#fff0c6" stroke-width="2" opacity=".5"/>
+          <path d="M520 137H606" stroke="#d5e0f3" stroke-width="2.5"/>
+          <path d="M556 145V268M585 145V268" stroke="#b9c9e0" stroke-opacity=".2" stroke-width="1.5"/>
+          <path d="M527 170H599M527 196H599M527 222H599M527 248H599" stroke="#c4d5ec" stroke-opacity=".14" stroke-width="1"/>
         </g>
         <!-- Street and reflected city lights -->
         <path d="M0 258H760" stroke="#8392b2" stroke-width="2" opacity=".65"/>
@@ -364,6 +382,8 @@
         <ellipse class="jump-shadow" cx="205" cy="251" rx="47" ry="6" fill="#060c19" filter="url(#shadowBlur)"/>
         <!-- Character rig: every limb is a separate animated shape -->
         <g class="dino-travel">
+          <animateMotion dur="26s" repeatCount="indefinite" calcMode="paced" rotate="0"
+            path="M 0,0 C 70,0 132,-2 190,0 C 225,0 250,-8 270,-28 C 296,-53 326,-91 355,-119 C 389,-139 432,-146 475,-140 C 520,-134 562,-119 610,-110"/>
           <g transform="translate(-120 112) scale(.48)">
             <g class="dino-torso">
               <!-- Tail -->
@@ -376,33 +396,40 @@
               <path d="M365 211Q373 174 416 169Q468 159 500 193Q523 222 500 253Q480 279 431 278Q388 276 367 249Q356 234 365 211Z" fill="url(#dinoSkin)" stroke="#087653" stroke-width="5"/>
               <path d="M392 244Q433 264 492 231Q490 265 450 273Q412 278 392 244Z" fill="url(#belly)" stroke="#299c6d" stroke-width="2"/>
               <path d="M408 250q9 8 20 9m8-7q10 8 21 7m8-10q9 6 18 3" fill="none" stroke="#4aa977" stroke-width="2" opacity=".65"/>
-              <!-- Neck -->
-              <path d="M453 202Q458 163 488 143Q520 122 550 141Q569 155 556 183Q543 207 509 222L477 239Z" fill="url(#dinoSkin)" stroke="#087653" stroke-width="5"/>
+              <!-- Neck: a small independent joint keeps the head from looking glued on -->
+              <g class="dino-neck">
+                <path d="M453 202Q458 163 488 143Q520 122 550 141Q569 155 556 183Q543 207 509 222L477 239Z" fill="url(#dinoSkin)" stroke="#087653" stroke-width="5"/>
+              </g>
               <!-- Head silhouette -->
               <g class="dino-head">
                 <path d="M520 140Q542 119 572 128Q600 136 606 157Q611 178 588 190Q564 201 537 188Q515 176 520 140Z" fill="url(#dinoSkin)" stroke="#087653" stroke-width="5"/>
                 <path d="M572 161Q609 154 635 173Q641 179 630 185Q604 198 575 185Z" fill="#29d88b" stroke="#087653" stroke-width="4"/>
                 <path d="M575 181Q604 190 632 180" fill="none" stroke="#07543f" stroke-width="3" stroke-linecap="round"/>
                 <g class="dino-jaw"><path d="M579 184Q604 200 630 185Q624 207 597 207Q580 202 579 184Z" fill="#087451" stroke="#07543f" stroke-width="3"/><path d="M593 190l5 8 5-7 5 7" fill="#fff2d6"/></g>
-                <ellipse cx="566" cy="150" rx="10" ry="12" fill="#f8fff3"/><ellipse cx="569" cy="151" rx="5" ry="7" fill="#14233a"/><circle cx="571" cy="148" r="2.3" fill="#fff"/>
+                <g class="dino-eye">
+                  <ellipse cx="566" cy="150" rx="10" ry="12" fill="#f8fff3"/>
+                  <ellipse cx="569" cy="151" rx="5" ry="7" fill="#14233a"/>
+                  <circle cx="571" cy="148" r="2.3" fill="#fff"/>
+                </g>
                 <path d="M548 137q13-11 27-6" fill="none" stroke="#c6ffdc" stroke-width="4" stroke-linecap="round"/>
                 <circle cx="602" cy="169" r="2.5" fill="#087653"/>
                 <path d="M587 140q8 3 12 10" stroke="#8cf4be" stroke-width="2" fill="none" opacity=".7"/>
               </g>
-              <!-- Layered, sculpted ruby-red dorsal spikes -->
-              <!-- Spines grow directly out of the curved back: shared base follows the spine -->
+              <!-- Рубиновые шипы: каждая широкая основа точно лежит на линии спины -->
               <g class="dino-spines" stroke-linejoin="round">
-                <path d="M375 207Q384 183 397 178Q411 168 424 171Q439 158 454 164Q471 153 486 166Q501 165 511 188" fill="none" stroke="#075d46" stroke-width="9" stroke-linecap="round"/>
-                <path d="M377 204L374 172Q388 179 395 196Z" fill="url(#spike)" stroke="#a72b52" stroke-width="3"/>
-                <path d="M394 195L401 157Q415 167 419 184Z" fill="url(#spike)" stroke="#a72b52" stroke-width="3"/>
-                <path d="M417 184L432 143Q446 157 447 176Z" fill="url(#spike)" stroke="#a72b52" stroke-width="3"/>
-                <path d="M443 176L461 139Q474 154 472 172Z" fill="url(#spike)" stroke="#a72b52" stroke-width="3"/>
-                <path d="M469 174L488 151Q499 166 496 185Z" fill="url(#spike)" stroke="#a72b52" stroke-width="3"/>
-                <path d="M491 185L507 166Q516 180 512 198Z" fill="url(#spike)" stroke="#a72b52" stroke-width="3"/>
-                <g fill="none" stroke="#ffc0c9" stroke-width="3" stroke-linecap="round" opacity=".9">
-                  <path d="M380 179l7 14m19-27 5 17m25-33 2 19m25-20-1 19m26-11-4 17m25-2-4 14"/>
+                <path d="M376 190C393 176 405 170 417 169C439 164 458 161 468 160C486 151 497 140 512 132"
+                      fill="none" stroke="#075d46" stroke-width="10" stroke-linecap="round"/>
+                <path d="M376 190Q379 165 388 156Q395 169 398 179Z" fill="url(#spike)" stroke="#a72b52" stroke-width="2.5"/>
+                <path d="M397 179Q402 151 410 141Q419 155 420 169Z" fill="url(#spike)" stroke="#a72b52" stroke-width="2.5"/>
+                <path d="M418 169Q427 139 435 130Q446 145 444 164Z" fill="url(#spike)" stroke="#a72b52" stroke-width="2.5"/>
+                <path d="M443 164Q453 132 462 123Q472 140 469 160Z" fill="url(#spike)" stroke="#a72b52" stroke-width="2.5"/>
+                <path d="M468 160Q480 129 490 119Q499 136 490 145Z" fill="url(#spike)" stroke="#a72b52" stroke-width="2.5"/>
+                <path d="M489 145Q501 120 511 112Q519 128 512 132Z" fill="url(#spike)" stroke="#a72b52" stroke-width="2.5"/>
+                <g fill="none" stroke="#ffc0c9" stroke-width="2.5" stroke-linecap="round" opacity=".9">
+                  <path d="M383 163l6 12M405 149l7 13M431 137l6 14M458 130l5 14M484 127l2 11M505 119l2 9"/>
                 </g>
-                <path d="M379 204Q420 183 454 173Q484 166 507 192" fill="none" stroke="#ff8197" stroke-width="2" opacity=".65"/>
+                <path d="M378 188C401 172 423 164 448 162C475 157 493 143 509 134"
+                      fill="none" stroke="#ff8197" stroke-width="1.8" opacity=".7"/>
               </g>
               <!-- Legs, individually articulated -->
               <g class="dino-leg-a">
@@ -415,7 +442,12 @@
                 <path d="M474 301Q491 310 508 301Q505 291 485 292L470 296Z" fill="#086c4f" stroke="#07543f" stroke-width="3"/>
                 <path d="M500 301l7 2m-19-5 5 5" stroke="#a2f4c3" stroke-width="2" stroke-linecap="round"/>
               </g>
-              <!-- Tiny forearm -->
+              <!-- Second little arm, visible on the near side -->
+              <g class="dino-arm dino-arm-back">
+                <path d="M452 207Q463 194 478 204L487 220Q475 232 459 221Z" fill="#2bcf88" stroke="#087653" stroke-width="4"/>
+                <path d="M477 217l8 3m-13 2 7 4" stroke="#e4ffe9" stroke-width="2.5" stroke-linecap="round"/>
+              </g>
+              <!-- Front forearm -->
               <g class="dino-arm">
                 <path d="M485 207Q507 190 530 207L541 225Q521 239 500 224Z" fill="#39df96" stroke="#087653" stroke-width="4"/>
                 <path d="M527 219l10 4m-15 2 8 5" stroke="#e4ffe9" stroke-width="3" stroke-linecap="round"/>
