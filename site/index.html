@@ -143,43 +143,62 @@
     .photo-frame{border-color:#302b46;background:#171e32}.story-count{color:#d3a4cf}
     .story-text,.final-note p{color:#d0c4dc}.final-note{border-color:#51415e;background:#211e35}
     .dot-page{background:#655275}.dot-page.active{background:#ef8eae}
-    .dino-travel{animation:dino-journey 14s cubic-bezier(.45,0,.25,1) infinite;transform-box:view-box}
-    .dino-torso{transform-box:fill-box;transform-origin:48% 72%;animation:torso-life 2.6s ease-in-out infinite}
-    .dino-leg-a,.dino-leg-b{transform-box:fill-box;transform-origin:50% 8%;animation:run-leg .56s ease-in-out infinite alternate}
-    .dino-leg-b{animation-delay:-.28s}
-    .dino-tail{transform-box:fill-box;transform-origin:98% 52%;animation:tail-swish 1.15s ease-in-out infinite alternate}
-    .dino-head{transform-box:fill-box;transform-origin:15% 78%;animation:head-nod 2.1s ease-in-out infinite}
-    .dino-jaw{transform-box:fill-box;transform-origin:5% 10%;animation:jaw-open 3.4s ease-in-out infinite}
-    .dino-arm{transform-box:fill-box;transform-origin:12% 20%;animation:arm-swing .7s ease-in-out infinite alternate}
-    .dino-spines{transform-box:fill-box;transform-origin:10% 90%;animation:spine-flex 2.6s ease-in-out infinite}
-    .flame{transform-box:fill-box;transform-origin:0 50%;animation:fire-breathe .42s ease-in-out infinite alternate}
-    .flame-spark{animation:spark-drift 1.3s ease-out infinite}
-    .window-fire{animation:window-blaze 3.5s ease-in-out infinite alternate;transform-origin:center}
-    .window-light{animation:window-flicker 3.8s ease-in-out infinite alternate}
-    .star{animation:star-twinkle 2.5s ease-in-out infinite alternate}
+    .dino-travel{animation:dino-journey 18s linear infinite;transform-box:view-box;will-change:transform}
+    .dino-torso{transform-box:fill-box;transform-origin:48% 72%;animation:torso-life 3.8s ease-in-out infinite;will-change:transform}
+    .dino-leg-a,.dino-leg-b{transform-box:fill-box;transform-origin:50% 8%;animation:leg-cycle 18s linear infinite;will-change:transform}
+    .dino-leg-b{animation-delay:-.18s}
+    .dino-tail{transform-box:fill-box;transform-origin:98% 52%;animation:tail-swish 3.2s ease-in-out infinite alternate;will-change:transform}
+    .dino-head{transform-box:fill-box;transform-origin:15% 78%;animation:head-nod 4.2s ease-in-out infinite;will-change:transform}
+    .dino-jaw{transform-box:fill-box;transform-origin:5% 10%;animation:jaw-open 6s ease-in-out infinite}
+    .dino-arm{transform-box:fill-box;transform-origin:12% 20%;animation:arm-swing 2.2s ease-in-out infinite alternate;will-change:transform}
+    .dino-spines{transform-box:fill-box;transform-origin:10% 90%;animation:spine-flex 3.8s ease-in-out infinite}
+    .flame{transform-box:fill-box;transform-origin:0 50%;animation:fire-breathe .8s ease-in-out infinite alternate}
+    .flame-spark{animation:spark-drift 1.8s ease-out infinite}
+    .window-fire{animation:window-blaze 4.8s ease-in-out infinite alternate;transform-origin:center}
+    .window-light{animation:window-flicker 5s ease-in-out infinite alternate}
+    .star{animation:star-twinkle 3.5s ease-in-out infinite alternate}
     @keyframes dino-journey{
       0%,8%{transform:translate(0px,0px)}
-      18%{transform:translate(75px,0px)}
-      29%{transform:translate(165px,-2px)}
-      38%{transform:translate(260px,-58px)}
-      45%{transform:translate(355px,-119px)}
-      52%,59%{transform:translate(355px,-119px)}
-      69%{transform:translate(230px,-4px)}
-      82%,100%{transform:translate(0px,0px)}
+      14%{transform:translate(34px,0px)}
+      20%{transform:translate(80px,0px)}
+      26%{transform:translate(130px,-2px)}
+      32%{transform:translate(180px,-10px)}
+      38%{transform:translate(235px,-35px)}
+      44%{transform:translate(290px,-70px)}
+      50%{transform:translate(340px,-108px)}
+      55%,60%{transform:translate(355px,-119px)}
+      65%{transform:translate(340px,-106px)}
+      70%{transform:translate(295px,-70px)}
+      76%{transform:translate(220px,-24px)}
+      82%{transform:translate(130px,-3px)}
+      89%{transform:translate(55px,0px)}
+      95%,100%{transform:translate(0px,0px)}
     }
-    @keyframes torso-life{0%,100%{transform:rotate(-1deg) translateY(0)}25%{transform:rotate(2deg) translateY(-3px)}50%{transform:rotate(-2deg) translateY(1px)}75%{transform:rotate(1.5deg) translateY(-2px)}}
-    @keyframes run-leg{from{transform:rotate(-28deg)}to{transform:rotate(30deg)}}
-    @keyframes tail-swish{from{transform:rotate(-13deg)}to{transform:rotate(13deg)}}
-    @keyframes head-nod{0%,100%{transform:rotate(0)}25%{transform:rotate(-8deg)}50%{transform:rotate(4deg)}75%{transform:rotate(-3deg)}}
-    @keyframes jaw-open{0%,22%,100%{transform:rotate(0)}28%,42%{transform:rotate(18deg)}}
-    @keyframes arm-swing{from{transform:rotate(-18deg)}to{transform:rotate(22deg)}}
-    @keyframes spine-flex{0%,100%{transform:skewY(0)}50%{transform:skewY(-2deg)}}
-    @keyframes fire-breathe{from{opacity:.45;scale:.82 .9}to{opacity:1;scale:1.12 1.08}}
-    @keyframes spark-drift{0%{opacity:0;transform:translate(0,0) scale(.5)}25%{opacity:1}100%{opacity:0;transform:translate(28px,-17px) scale(0)}}
-    @keyframes window-blaze{from{opacity:.42;filter:brightness(.85)}to{opacity:1;filter:brightness(1.35)}}
-    @keyframes window-flicker{from{opacity:.55}to{opacity:1}}
-    @keyframes star-twinkle{from{opacity:.2}to{opacity:1}}
-    @keyframes shadow-jump{0%,28%,82%,100%{transform:scaleX(1);opacity:.35}40%,59%{transform:scaleX(.6);opacity:.16}69%{transform:scaleX(.9);opacity:.28}}
+    @keyframes torso-life{
+      0%,100%{transform:rotate(-.6deg) translateY(0)}
+      25%{transform:rotate(.8deg) translateY(-1.5px)}
+      50%{transform:rotate(-.8deg) translateY(0)}
+      75%{transform:rotate(.6deg) translateY(-1px)}
+    }
+    @keyframes leg-cycle{
+      0%,8%,55%,60%,95%,100%{transform:rotate(0deg)}
+      14%,20%,26%,32%{transform:rotate(-10deg)}
+      17%,23%,29%,35%{transform:rotate(12deg)}
+      38%,44%,50%{transform:rotate(-18deg)}
+      65%,70%,76%,82%,89%{transform:rotate(8deg)}
+    }
+    @keyframes tail-swish{from{transform:rotate(-5deg)}to{transform:rotate(5deg)}}
+    @keyframes head-nod{0%,100%{transform:rotate(0)}25%{transform:rotate(-2deg)}50%{transform:rotate(1.5deg)}75%{transform:rotate(-1deg)}}
+    @keyframes jaw-open{0%,35%,100%{transform:rotate(0)}40%,48%{transform:rotate(10deg)}}
+    @keyframes arm-swing{from{transform:rotate(-5deg)}to{transform:rotate(7deg)}}
+    @keyframes spine-flex{0%,100%{transform:skewY(0)}50%{transform:skewY(-.6deg)}}
+    @keyframes fire-breathe{from{opacity:.65;scale:.92 .96}to{opacity:1;scale:1.06 1.03}}
+    @keyframes spark-drift{0%{opacity:0;transform:translate(0,0) scale(.5)}25%{opacity:1}100%{opacity:0;transform:translate(22px,-13px) scale(0)}}
+    @keyframes window-blaze{from{opacity:.55;filter:brightness(.95)}to{opacity:.9;filter:brightness(1.15)}}
+    @keyframes window-flicker{from{opacity:.72}to{opacity:1}}
+    @keyframes star-twinkle{from{opacity:.45}to{opacity:.95}}
+    @keyframes shadow-jump{0%,30%,82%,100%{transform:scaleX(1);opacity:.35}45%,60%{transform:scaleX(.72);opacity:.2}72%{transform:scaleX(.9);opacity:.3}}
+    @media(prefers-reduced-motion:reduce){.dino-travel,.dino-torso,.dino-leg-a,.dino-leg-b,.dino-tail,.dino-head,.dino-jaw,.dino-arm,.dino-spines,.flame,.flame-spark,.window-fire,.window-light,.star{animation-duration:30s!important;animation-iteration-count:1!important}}
     @media(max-width:650px){
       .page{width:min(100% - 24px,540px);padding-top:16px}.top{margin-bottom:15px}
       .hero{grid-template-columns:1fr;gap:15px;padding:22px;border-radius:22px}
