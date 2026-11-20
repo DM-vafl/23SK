@@ -97,54 +97,104 @@
     @media(max-width:370px){.page{width:calc(100% - 20px)}.brand-mark{width:39px;height:39px;border-radius:13px}.brand-name{font-size:14px}.brand-sub{font-size:10px}.top .pill{max-width:118px;white-space:normal;text-align:center;line-height:1.25}.hero{padding:18px}.hero h1{font-size:29px}.hero p{font-size:13px}.stat-value{font-size:15px}.section-head h2{font-size:16px}.status{font-size:10px;padding:6px 8px}.story{max-height:94dvh;border-radius:20px}.story-body{padding:12px}.photo-frame{height:min(40dvh,300px);min-height:165px}.story-controls{gap:5px}.story-controls button{padding:0 9px;min-height:39px;font-size:11px}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
   
-    /* 23СК night city redesign */
-    :root{color-scheme:dark;--ink:#e8e5f3;--muted:#a7abc4;--pink:#ff789f;--pink2:#a77bcb;--pale:#11182b;--line:#35415e;--plum:#c5a0ec;--green:#7ed9ac;--shadow:0 20px 55px #05091488}
+    /* Unified night-city schedule panel */
+    :root{color-scheme:dark;--ink:#e9e7f4;--muted:#a8aec6;--line:#35415d;--shadow:0 22px 60px #05091488}
     html{background:#0b1020}
-    body{color:#e8e5f3;background:radial-gradient(ellipse at 8% 0%,#273451 0,transparent 36rem),radial-gradient(ellipse at 95% 16%,#382743 0,transparent 34rem),linear-gradient(180deg,#0b1020,#11182b 55%,#171629)}
-    .hearts-bg{opacity:.18}.bg-heart{color:#c69be8}
-    .brand-mark{background:linear-gradient(145deg,#a77bcb,#ef789f);box-shadow:0 9px 22px #9a65c655}
-    .brand-sub,.hero p,.hero-side span,.stat-note,.change-room,.footer,.love-copy{color:#a8abc3}
+    body{color:var(--ink);background:radial-gradient(ellipse at 12% 0%,#263552 0,transparent 38rem),radial-gradient(ellipse at 92% 18%,#38263f 0,transparent 35rem),linear-gradient(180deg,#0b1020,#11192b 58%,#171629)}
+    .hearts-bg{opacity:.12}.bg-heart{color:#c69be8}
+    .brand-mark{background:linear-gradient(145deg,#9e82cb,#e77fa8);box-shadow:0 9px 22px #9a65c655}
+    .brand-sub,.hero p,.hero-side span,.stat-note,.change-room,.footer,.love-copy{color:#a8aec3}
     .pill{border-color:#3a4563;background:#171f35;color:#c3b8d4}
-    .hero{border-color:#3d4564;background:linear-gradient(125deg,#18233a,#22233d 58%,#30223e);box-shadow:var(--shadow)}
-    .hero:after{color:#c18bcb;opacity:.12}
-    h1{color:#f0e8fa}.eyebrow,.section-kicker,.stat-label,.love-kicker{color:#c19acb}
+    .hero{border-color:#3d4564;background:linear-gradient(125deg,#18243b,#22243d 58%,#30243f);box-shadow:var(--shadow)}
+    .hero:after{color:#c18bcb;opacity:.1}h1{color:#f0e8fa}
+    .eyebrow,.section-kicker,.stat-label,.love-kicker{color:#c19acb}
     .hero-side{border-color:#51435f;background:#171d32cc}.hero-side strong{color:#f0d9ed}.hero-heart{color:#ff8fb5}
     .stat,.panel{border-color:#37415e;background:#151e33;box-shadow:0 12px 34px #05091455}
     .stat-value,.section-head h2,.empty h3,.love-title{color:#eee8f6}
     .status{border-color:#345b50;background:#142d2b;color:#8ce0b0}
     .status.has{border-color:#75523c;background:#30251f;color:#ffca8b}
     .status.wait{border-color:#554466;background:#282139;color:#cbb0df}
-    .change-item{border-color:#3d4663;background:linear-gradient(120deg,#1b2941,#202139)}
-    .change-num{background:#3a2b4c;color:#e1b7e8}
-    .change-label{color:#aaa4c5}.change-text{color:#d9d7e8}.change-text strong{color:#fff0bd}
+    .panel{overflow:hidden;border-radius:24px;background:linear-gradient(145deg,#121d32,#1b2038 68%,#241d35)}
+    .panel-inner{padding:0}
+    .schedule-world{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,1.05fr);min-height:300px;isolation:isolate}
+    .schedule-data{position:relative;z-index:2;min-width:0;padding:25px 22px 24px}
+    .schedule-data:after{content:"";position:absolute;z-index:-1;inset:0 -80px 0 0;background:linear-gradient(90deg,#151f34 0%,#151f34f5 70%,#151f3400 100%);pointer-events:none}
+    .schedule-scene{position:relative;min-width:0;min-height:300px;overflow:hidden;background:linear-gradient(155deg,#202b47,#30223e 75%,#171c31)}
+    .schedule-scene:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 20%,#f4c98a22,transparent 24%),linear-gradient(0deg,#111a2e 0%,transparent 55%);z-index:1;pointer-events:none}
+    .scene-label{position:absolute;z-index:3;right:16px;top:15px;color:#d7b9df;font-size:9px;font-weight:900;letter-spacing:.16em}
+    .scene-svg{position:absolute;inset:0;width:100%;height:100%;min-height:300px}
+    .change-list{display:grid;gap:10px;list-style:none;padding:0;margin:16px 0 0}
+    .change-item{padding:13px 14px;border:1px solid #3e4965;border-radius:15px;background:linear-gradient(125deg,#202c43,#24243c)}
+    .change-top{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+    .change-num{display:inline-flex;align-items:center;justify-content:center;padding:5px 9px;border-radius:9px;background:#40304f;color:#e4c2ed;font-size:11px;font-weight:850}
+    .change-label{color:#aeb3cb;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .change-text{color:#e3e2ef;font-size:14px;line-height:1.55;overflow-wrap:anywhere}
+    .change-text strong{color:#fff0bf;font-weight:850}
+    .change-room{margin-top:8px;color:#b7c1d9;font-size:11px;font-weight:750}
+    .empty{text-align:left;padding:20px 0 4px}.empty-symbol{background:#342b49;color:#dba4cb}
+    .empty p{margin:0;color:#adb4cc;font-size:12px;line-height:1.65}
     .love-card{border-color:#55405e;background:linear-gradient(115deg,#1b263e,#29213d 70%,#302039);box-shadow:0 12px 30px #05091466}
     .love-icon{background:linear-gradient(145deg,#bd85cf,#e779a2)}
     .love-button,.primary-button{background:linear-gradient(130deg,#d27ab0,#987bd0);box-shadow:0 7px 18px #9a65c655}
     .secondary-button{border-color:#51445f;background:#211e35;color:#e0c0e4}
     .modal{background:#050814c9}.story{border-color:#4b3d60;background:linear-gradient(180deg,#1a233a,#211b32)}
-    .story-head{border-color:#443b5b}.story-head strong,.story-title{color:#f0d8eb}.close{border-color:#51445f;background:#24223a;color:#f1d7e8}
-    .photo-frame{border-color:#302b46;background:#171e32}
-    .story-count{color:#d3a4cf}.story-text,.final-note p{color:#d0c4dc}.final-note{border-color:#51415e;background:#211e35}
+    .story-head{border-color:#443b5b}.story-head strong,.story-title{color:#f0d8eb}
+    .close{border-color:#51445f;background:#24223a;color:#f1d7e8}
+    .photo-frame{border-color:#302b46;background:#171e32}.story-count{color:#d3a4cf}
+    .story-text,.final-note p{color:#d0c4dc}.final-note{border-color:#51415e;background:#211e35}
     .dot-page{background:#655275}.dot-page.active{background:#ef8eae}
-    .night-scene{position:relative;overflow:hidden;margin:15px 0 17px;border:1px solid #46516f;border-radius:22px;background:linear-gradient(130deg,#18243c,#2b203b);box-shadow:0 18px 48px #05091488}
-    .scene-copy{position:absolute;z-index:2;left:22px;top:18px;display:grid;gap:4px;max-width:210px;text-shadow:0 2px 8px #101629}
-    .scene-kicker{color:#e2a9d9;font-size:9px;font-weight:900;letter-spacing:.17em}
-    .scene-copy strong{color:#fff0e5;font-size:18px;letter-spacing:-.03em}
-    .scene-copy>span:last-child{color:#c0bfd5;font-size:10px;line-height:1.45}
-    .city-art{display:block;width:100%;height:auto;min-height:175px}
-    .dino{transform:translate(255px,20px);transform-origin:0 0;animation:dino-climb 12s ease-in-out infinite}
-    @keyframes dino-climb{0%,8%{transform:translate(245px,24px) rotate(0)}25%{transform:translate(400px,2px) rotate(-4deg)}43%{transform:translate(570px,-28px) rotate(-10deg)}56%,66%{transform:translate(610px,-48px) rotate(-4deg)}82%{transform:translate(430px,-8px) rotate(5deg)}100%{transform:translate(245px,24px) rotate(0)}}
-    .fire-burst{transform-origin:116px 145px;animation:fire-breathe 1.1s ease-in-out infinite alternate}
-    @keyframes fire-breathe{from{opacity:.25;transform:scale(.55) translateX(-5px)}to{opacity:1;transform:scale(1.18) translateX(5px)}}
-    .fire{animation:fire-flicker .35s ease-in-out infinite alternate}
-    @keyframes fire-flicker{from{opacity:.5}to{opacity:1}}
-    .city-windows{animation:window-glow 2.8s ease-in-out infinite alternate}
-    @keyframes window-glow{from{opacity:.45}to{opacity:1}}
-    .spark{animation:spark-float 1.5s ease-in-out infinite alternate}.s2{animation-delay:.3s}.s3{animation-delay:.7s}
-    @keyframes spark-float{to{transform:translateY(-9px);opacity:.2}}
-    .scene-caption{display:flex;justify-content:space-between;gap:8px;padding:0 16px 13px;color:#b7b6d0;font-size:8px;font-weight:850;letter-spacing:.09em}
-    @media(max-width:650px){.night-scene{margin:12px 0 14px}.scene-copy{left:15px;top:13px;max-width:175px}.scene-copy strong{font-size:16px}.scene-copy>span:last-child{font-size:9px}.city-art{min-height:150px}.scene-caption{padding:0 11px 11px;font-size:7px;letter-spacing:.04em}}
-    @media(prefers-reduced-motion:reduce){.dino,.fire-burst,.fire,.city-windows,.spark{animation:none!important}}
+    .dino-body{transform-origin:510px 222px;animation:dino-bob 4.8s ease-in-out infinite}
+    .dino-legs{transform-origin:500px 250px;animation:climb-legs 1.15s ease-in-out infinite}
+    .dino-tail{transform-origin:445px 215px;animation:tail-sway 3.8s ease-in-out infinite}
+    .dino-arm{transform-origin:530px 218px;animation:reach 2.3s ease-in-out infinite}
+    .fire-core{transform-origin:648px 175px;animation:fire-pulse .8s ease-in-out infinite alternate}
+    .footprint{animation:track-glow 3.5s ease-in-out infinite}
+    .footprint:nth-of-type(2n){animation-delay:1.2s}
+    .window-light{animation:window-flicker 4.5s ease-in-out infinite alternate}
+    .window-light:nth-child(3n){animation-delay:1.4s}
+    .star{animation:star-twinkle 3s ease-in-out infinite alternate}
+    @keyframes dino-bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-5px) rotate(-1deg)}}
+    @keyframes climb-legs{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(8deg)}}
+    @keyframes tail-sway{0%,100%{transform:rotate(0)}50%{transform:rotate(-7deg)}}
+    @keyframes reach{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(13deg)}}
+    @keyframes fire-pulse{from{opacity:.55;transform:scale(.78) translateX(0)}to{opacity:1;transform:scale(1.12) translateX(7px)}}
+    @keyframes track-glow{0%,100%{opacity:.25}50%{opacity:.8}}
+    @keyframes window-flicker{0%,80%,100%{opacity:.65}88%{opacity:1}}
+    @keyframes star-twinkle{from{opacity:.25}to{opacity:1}}
+    .scene-ground{stroke:#6b789b;stroke-width:2;opacity:.65}
+    @media(max-width:650px){
+      .page{width:min(100% - 24px,540px);padding-top:16px}.top{margin-bottom:15px}
+      .hero{grid-template-columns:1fr;gap:15px;padding:22px;border-radius:22px}
+      .hero:after{right:20px;top:-65px;font-size:130px}
+      .hero-side{display:flex;align-items:center;justify-content:flex-start;gap:12px;padding:12px 14px;text-align:left}
+      .hero-heart{font-size:28px}.hero-side strong{margin:0}.hero-side span{margin:3px 0 0}
+      .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:11px 0 18px}
+      .stat{padding:12px}.stat:last-child{grid-column:1/-1}
+      .section-head{align-items:center}.section-head h2{font-size:17px}
+      .schedule-world{grid-template-columns:1fr;min-height:0}
+      .schedule-scene{grid-row:1;min-height:180px;height:180px}
+      .scene-svg{min-height:180px}
+      .schedule-data{grid-row:2;padding:17px 15px 18px}
+      .schedule-data:after{display:none}
+      .scene-label{right:12px;top:10px;font-size:8px}
+      .change-text{font-size:13px}
+      .love-card{align-items:flex-start;flex-wrap:wrap;padding:14px;gap:11px}
+      .love-content{min-width:calc(100% - 62px)}.love-button{width:100%;min-height:44px}
+      .pill{font-size:10px;padding:7px 9px}
+    }
+    @media(max-width:370px){
+      .page{width:calc(100% - 20px)}.brand-mark{width:39px;height:39px;border-radius:13px}
+      .brand-name{font-size:14px}.brand-sub{font-size:10px}
+      .top .pill{max-width:118px;white-space:normal;text-align:center;line-height:1.25}
+      .hero{padding:18px}.hero h1{font-size:29px}.hero p{font-size:13px}
+      .stat-value{font-size:15px}.section-head h2{font-size:16px}
+      .status{font-size:10px;padding:6px 8px}.schedule-scene{height:160px;min-height:160px}
+      .scene-svg{min-height:160px}.story{max-height:94dvh;border-radius:20px}
+      .story-body{padding:12px}.photo-frame{height:min(40dvh,300px);min-height:165px}
+      .story-controls{gap:5px}.story-controls button{padding:0 9px;min-height:39px;font-size:11px}
+    }
+    @media(prefers-reduced-motion:reduce){.dino-body,.dino-legs,.dino-tail,.dino-arm,.fire-core,.footprint,.window-light,.star{animation:none!important}}
+
 
   </style>
 </head>
@@ -162,49 +212,6 @@
     </section>
 
     
-    <section class="night-scene" aria-label="Динозавр исследует ночной город">
-      <div class="scene-copy"><span class="scene-kicker">23СК AFTER DARK</span><strong>Ночной патруль</strong><span>Пока город спит, наш динозавр следит за заменами 🦖</span></div>
-      <svg class="city-art" viewBox="0 0 900 300" role="img" aria-label="Зелёный динозавр карабкается на ночной небоскрёб">
-        <defs>
-          <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#17243d"/><stop offset="1" stop-color="#342448"/></linearGradient>
-          <linearGradient id="tower" x2="0" y2="1"><stop stop-color="#344766"/><stop offset="1" stop-color="#1a2942"/></linearGradient>
-          <linearGradient id="flame" x2="1" y2="0"><stop stop-color="#ffb347"/><stop offset=".55" stop-color="#ff6a3d"/><stop offset="1" stop-color="#ff3d68"/></linearGradient>
-          <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        </defs>
-        <rect width="900" height="300" rx="20" fill="url(#sky)"/>
-        <circle cx="730" cy="55" r="25" fill="#f5d9a5" opacity=".9"/>
-        <circle cx="740" cy="47" r="25" fill="#202a45"/>
-        <g fill="#d9e5ff" opacity=".8"><circle cx="85" cy="48" r="2"/><circle cx="180" cy="84" r="1.8"/><circle cx="280" cy="34" r="1.5"/><circle cx="490" cy="62" r="2"/><circle cx="620" cy="32" r="1.5"/><circle cx="840" cy="104" r="2"/></g>
-        <path d="M0 240 L0 170 70 170 70 132 130 132 130 205 190 205 190 150 245 150 245 220 310 220 310 180 370 180 370 230 430 230 430 150 490 150 490 215 550 215 550 165 610 165 610 230 680 230 680 115 720 115 720 230 780 230 780 175 840 175 840 220 900 220 900 300 0 300Z" fill="#111d32"/>
-        <g fill="#f5c77b" opacity=".78" class="city-windows">
-          <path d="M25 188h8v12h-8zm22 0h8v12h-8zm42-42h8v12h-8zm25 0h8v12h-8zm70 73h8v12h-8zm22 0h8v12h-8zm115-22h8v12h-8zm22 0h8v12h-8zm130-30h8v12h-8zm23 0h8v12h-8zm125 25h8v12h-8zm22 0h8v12h-8z"/>
-        </g>
-        <g class="main-tower">
-          <path d="M690 300V90l28-32 28 32v210Z" fill="url(#tower)" stroke="#8192b4" stroke-width="2"/>
-          <path d="M700 105h36M700 132h36M700 159h36M700 186h36M700 213h36M700 240h36" stroke="#f7c879" stroke-width="5" stroke-linecap="round" opacity=".75"/>
-          <path d="M718 58V28" stroke="#f4d59a" stroke-width="3" filter="url(#glow)"/>
-          <path d="M678 300h80" stroke="#91a6c9" stroke-width="3"/>
-        </g>
-        <g class="dino">
-          <path d="M0 0" fill="none"/>
-          <path d="M-88 205 Q-128 182 -153 198 Q-136 220 -105 226" fill="#05c978" stroke="#047b58" stroke-width="3"/>
-          <ellipse cx="-50" cy="196" rx="57" ry="38" fill="#08d17a" stroke="#047b58" stroke-width="3"/>
-          <path d="M-20 178 Q-5 145 25 143 Q52 141 62 161 Q70 177 52 190 L7 203Z" fill="#08d17a" stroke="#047b58" stroke-width="3"/>
-          <ellipse cx="45" cy="151" rx="39" ry="28" fill="#08d17a" stroke="#047b58" stroke-width="3"/>
-          <path d="M68 153q24 4 29 17q-15 10-37 2" fill="#08d17a"/>
-          <circle cx="53" cy="143" r="4" fill="#13233b"/>
-          <path d="M-76 173l-4-27 18 15 5-30 17 22 8-27 17 25 12-22 16 24" fill="#ff405d" stroke="#b92e54" stroke-width="3" stroke-linejoin="round"/>
-          <path d="M-70 217l-6 28m40-22 5 29m45-50 8 23" stroke="#08d17a" stroke-width="15" stroke-linecap="round"/>
-          <path d="M-76 245l-16 4m56 3-11 5m89-52 11 6" stroke="#047b58" stroke-width="5" stroke-linecap="round"/>
-          <path d="M85 164q22-2 32-17" stroke="#ffb35c" stroke-width="5" stroke-linecap="round" class="fire"/>
-        </g>
-        <path class="fire-burst" d="M116 145q35-29 64-9q-17 7-18 22q-17-11-46-13Z" fill="url(#flame)" filter="url(#glow)"/>
-        <g fill="#ffb65d" opacity=".8"><circle cx="130" cy="130" r="3" class="spark s1"/><circle cx="155" cy="113" r="2" class="spark s2"/><circle cx="178" cy="137" r="3" class="spark s3"/></g>
-        <path d="M0 270H900" stroke="#647b9e" stroke-width="2" opacity=".55"/>
-      </svg>
-      <div class="scene-caption"><span>🌙 23СК CITY</span><span>🦖 КАРАБКАЕТСЯ НА ВЫШКУ</span><span>🔥 ОГНЕННЫЙ РЕЖИМ</span></div>
-    </section>
-
     <section class="stats" aria-label="Сводка">
       <div class="stat"><div class="stat-label">Группа</div><div class="stat-value" id="groupValue">23СК</div><div class="stat-note">Твоя учебная группа</div></div>
       <div class="stat"><div class="stat-label">Статус</div><div class="stat-value" id="statusValue">Загрузка…</div><div class="stat-note" id="statusNote">Получаем последние данные</div></div>
@@ -256,24 +263,75 @@
     if(!from||!to)return null;
     return {pair:pairMap[roman]||roman,from,to,room};
   }
+  function dinosaurScene(){
+    return `<div class="schedule-scene" aria-label="Динозавр карабкается по ночному небоскрёбу">
+      <div class="scene-label">NIGHT CITY · 23СК</div>
+      <svg class="scene-svg" viewBox="0 0 760 330" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Зелёный динозавр с красными шипами дышит огнём на фоне ночного города">
+        <defs>
+          <linearGradient id="sceneSky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#202d4b"/><stop offset="1" stop-color="#30223e"/></linearGradient>
+          <linearGradient id="glassTower" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#506184"/><stop offset=".5" stop-color="#293955"/><stop offset="1" stop-color="#19263f"/></linearGradient>
+          <linearGradient id="dinoGreen" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#37e69a"/><stop offset="1" stop-color="#07965f"/></linearGradient>
+          <linearGradient id="flameGrad" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#ffd36b"/><stop offset=".45" stop-color="#ff874d"/><stop offset="1" stop-color="#ff456f"/></linearGradient>
+          <filter id="sceneGlow"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <rect width="760" height="330" fill="url(#sceneSky)"/>
+        <circle cx="625" cy="53" r="26" fill="#f2d8a4" opacity=".9"/><circle cx="638" cy="43" r="25" fill="#202d49"/>
+        <g fill="#e5eaff"><circle class="star" cx="62" cy="45" r="2"/><circle class="star" cx="145" cy="83" r="1.5"/><circle class="star" cx="300" cy="40" r="2"/><circle class="star" cx="470" cy="65" r="1.6"/><circle class="star" cx="705" cy="112" r="1.7"/></g>
+        <path d="M0 275V180h58v-48h55v143h38V164h62v111h43V202h48v73h39V150h65v125h35V190h58v85h34V120h54v155h42V170h58v105h31v55H0Z" fill="#121e33"/>
+        <g fill="#f6c978" class="window-light">
+          <path d="M18 199h7v13h-7zm17 0h7v13h-7zm33-50h7v13h-7zm18 0h7v13h-7zm89 29h7v13h-7zm19 0h7v13h-7zm73 39h7v13h-7zm17 0h7v13h-7zm94-54h7v13h-7zm18 0h7v13h-7zm87 37h7v13h-7zm18 0h7v13h-7z"/>
+        </g>
+        <g>
+          <path d="M515 330V92l38-44 38 44v238Z" fill="url(#glassTower)" stroke="#8799bc" stroke-width="2"/>
+          <path d="M525 113h56M525 144h56M525 175h56M525 206h56M525 237h56M525 268h56M525 299h56" stroke="#f3c979" stroke-width="5" stroke-linecap="round" opacity=".78"/>
+          <path d="M553 47V19" stroke="#f5d8a0" stroke-width="3" filter="url(#sceneGlow)"/>
+          <path d="M507 330h92" stroke="#91a5c7" stroke-width="3"/>
+        </g>
+        <g class="footprints" fill="#d2a0d6" opacity=".48">
+          <ellipse class="footprint" cx="112" cy="286" rx="5" ry="9" transform="rotate(-25 112 286)"/><circle cx="104" cy="275" r="2.5"/><circle cx="111" cy="273" r="2.5"/><circle cx="118" cy="276" r="2.5"/>
+          <ellipse class="footprint" cx="174" cy="265" rx="5" ry="9" transform="rotate(20 174 265)"/><circle cx="167" cy="253" r="2.5"/><circle cx="174" cy="252" r="2.5"/><circle cx="181" cy="255" r="2.5"/>
+          <ellipse class="footprint" cx="235" cy="285" rx="5" ry="9" transform="rotate(-20 235 285)"/><circle cx="228" cy="273" r="2.5"/><circle cx="235" cy="272" r="2.5"/><circle cx="242" cy="275" r="2.5"/>
+        </g>
+        <g class="dino-body">
+          <g class="dino-tail"><path d="M370 223Q326 190 288 213Q313 247 371 245Z" fill="url(#dinoGreen)" stroke="#087a58" stroke-width="4"/></g>
+          <ellipse cx="423" cy="224" rx="66" ry="46" fill="url(#dinoGreen)" stroke="#087a58" stroke-width="4"/>
+          <path d="M444 207Q457 162 497 151Q527 145 546 167Q562 188 538 211L492 238Z" fill="url(#dinoGreen)" stroke="#087a58" stroke-width="4"/>
+          <ellipse cx="540" cy="154" rx="43" ry="31" fill="url(#dinoGreen)" stroke="#087a58" stroke-width="4"/>
+          <path d="M568 154Q598 150 608 170Q588 187 557 177" fill="#20c77d" stroke="#087a58" stroke-width="3"/>
+          <circle cx="550" cy="144" r="5" fill="#102039"/><circle cx="551" cy="142" r="1.5" fill="#fff"/>
+          <path d="M389 195l-7-28 22 17 8-38 19 32 12-39 20 34 15-28 17 33" fill="#ed4762" stroke="#a92d54" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M410 259q-12 20-7 38m53-34q10 18 4 34" stroke="#0bbd77" stroke-width="18" stroke-linecap="round"/>
+          <path d="M395 297l-14 4m78-2 12 3" stroke="#086e51" stroke-width="6" stroke-linecap="round"/>
+          <g class="dino-arm"><path d="M474 204q29-5 43 14l-17 17q-17-13-34-9" fill="#21d58b" stroke="#087a58" stroke-width="4" stroke-linejoin="round"/></g>
+          <path d="M519 175q14 9 25 3" stroke="#075c49" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </g>
+        <path class="fire-core" d="M603 160q38-34 84-7q-22 7-23 30q-25-19-61-8Z" fill="url(#flameGrad)" filter="url(#sceneGlow)"/>
+        <path d="M610 164q26-18 51-8q-17 8-17 20q-16-13-34-12Z" fill="#ffe18b" opacity=".95" filter="url(#sceneGlow)"/>
+        <g fill="#ffb765"><circle class="star" cx="673" cy="119" r="3"/><circle class="star" cx="696" cy="145" r="2"/><circle class="star" cx="645" cy="105" r="2.5"/></g>
+        <path class="scene-ground" d="M0 316H760"/>
+      </svg>
+    </div>`;
+  }
   function renderData(data){
     $('groupValue').textContent=data.group||'23СК';
     const badge=$('statusBadge'); badge.className='status';
     const host=$('scheduleContent');
     $('dateValue').textContent=data.date_label||'—';
     $('fileValue').textContent=data.file_name||'Ожидаем документ';
+    let content='';
     if(data.status==='has_changes'){
       $('statusValue').textContent=`${data.count||data.lines?.length||0} замен`;
       $('statusNote').textContent='Найдены строки для 23СК'; badge.textContent='Есть замены'; badge.classList.add('has');
       const lines=Array.isArray(data.lines)?data.lines:[];
-      host.innerHTML=`<div class="panel-inner"><div class="section-kicker">ПОНЯТНО О КАЖДОЙ ЗАМЕНЕ</div><ol class="change-list">${lines.map((line,i)=>{const change=formatChange(line);return change?`<li class="change-item"><div class="change-top"><span class="change-num">${change.pair} пара</span><span class="change-label">Изменение расписания</span></div><div class="change-text"><strong>${esc(change.from)}</strong> заменена на <strong>${esc(change.to)}</strong></div>${change.room?`<div class="change-room">📍 Кабинет ${esc(change.room)}</div>`:''}</li>`:`<li class="change-item"><div class="change-top"><span class="change-num">${String(i+1).padStart(2,'0')}</span><span class="change-label">Строка из расписания</span></div><div class="change-text">${esc(line)}</div></li>`;}).join('')}</ol>${data.count>lines.length?`<p class="stat-note">И ещё ${data.count-lines.length} строк(и).</p>`:''}</div>`;
+      content=`<div class="schedule-world">${dinosaurScene()}<div class="schedule-data"><div class="section-kicker">ИЗМЕНЕНИЯ В РАСПИСАНИИ</div><ol class="change-list">${lines.map((line,i)=>{const change=formatChange(line);return change?`<li class="change-item"><div class="change-top"><span class="change-num">${change.pair} пара</span><span class="change-label">Изменение расписания</span></div><div class="change-text"><strong>${esc(change.from)}</strong> заменена на <strong>${esc(change.to)}</strong></div>${change.room?`<div class="change-room">⌖ Кабинет ${esc(change.room)}</div>`:''}</li>`:`<li class="change-item"><div class="change-top"><span class="change-num">${String(i+1).padStart(2,'0')}</span><span class="change-label">Строка из расписания</span></div><div class="change-text">${esc(line)}</div></li>`;}).join('')}${data.count>lines.length?`<p class="stat-note">И ещё ${data.count-lines.length} строк(и).</p>`:''}</ol></div></div>`;
     }else if(data.status==='no_changes'){
       $('statusValue').textContent='Нет замен'; $('statusNote').textContent='Документ успешно прочитан'; badge.textContent='Всё спокойно';
-      host.innerHTML=`<div class="empty"><div class="empty-symbol">✓</div><h3>На эту дату замен нет</h3><p>Документ <strong>${esc(data.file_name||'')}</strong> проверен. Для группы ${esc(data.group||'23СК')} замен не найдено. Хорошего дня! 💗</p></div>`;
+      content=`<div class="schedule-world">${dinosaurScene()}<div class="schedule-data"><div class="section-kicker">РАСПИСАНИЕ 23СК</div><div class="empty"><h3>Сегодня без приключений</h3><p>Документ <strong>${esc(data.file_name||'')}</strong> проверен. Замен для группы ${esc(data.group||'23СК')} не найдено. Динозавр может спокойно отдыхать 🌙</p></div></div></div>`;
     }else{
-      $('statusValue').textContent='Ожидаем'; $('statusNote').textContent='Первая проверка ещё не завершена'; badge.textContent='Ожидаем данные';
-      host.innerHTML='<div class="empty"><div class="empty-symbol">♡</div><h3>Пока нечего показать</h3><p>После первой успешной проверки здесь появятся замены или сообщение, что на эту дату их нет.</p></div>';
+      $('statusValue').textContent='Ожидаем'; $('statusNote').textContent='Первая проверка ещё не завершена'; badge.textContent='Ожидаем данные'; badge.classList.add('wait');
+      content=`<div class="schedule-world">${dinosaurScene()}<div class="schedule-data"><div class="section-kicker">РАСПИСАНИЕ 23СК</div><div class="empty"><h3>Пока нечего показать</h3><p>Как только облачный монитор прочитает документ, здесь появятся замены или сообщение, что их нет.</p></div></div></div>`;
     }
+    host.innerHTML=content;
   }
   async function loadData(){try{const response=await fetch(`${DATA_URL}?t=${Date.now()}`,{cache:'no-store'});if(!response.ok)throw new Error('HTTP '+response.status);renderData(await response.json());$('connectionLabel').textContent='Данные загружены';}catch(error){$('connectionLabel').textContent='Нет связи с данными';$('statusNote').textContent='Не удалось обновить файл расписания';}}
   function makeHearts(count=22){const symbols=['♥','♡','❤','💕'];for(let i=0;i<count;i++){const item=document.createElement('span');item.className='confetti';item.textContent=symbols[Math.floor(Math.random()*symbols.length)];item.style.left=(Math.random()*100)+'vw';item.style.fontSize=(14+Math.random()*20)+'px';item.style.color=['#e58cae','#cc8eb4','#f0afc8','#b783aa'][Math.floor(Math.random()*4)];item.style.setProperty('--dur',(2.4+Math.random()*2.5)+'s');item.style.setProperty('--drift',((Math.random()-.5)*150)+'px');item.style.setProperty('--spin',((Math.random()-.5)*600)+'deg');document.body.appendChild(item);setTimeout(()=>item.remove(),5200);}}
