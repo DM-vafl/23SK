@@ -155,8 +155,6 @@
     .flame-spark{animation:spark-drift 1.3s ease-out infinite}
     .window-light{animation:window-flicker 3.8s ease-in-out infinite alternate}
     .star{animation:star-twinkle 2.5s ease-in-out infinite alternate}
-    .footprint{animation:track-glow 2.8s ease-in-out infinite}
-    .jump-shadow{transform-box:fill-box;transform-origin:center;animation:shadow-jump 12s ease-in-out infinite}
     @keyframes dino-journey{
       0%,7%{transform:translate(0px,0px)}
       22%{transform:translate(115px,0px)}
@@ -208,7 +206,7 @@
       .photo-frame{height:min(40dvh,300px);min-height:165px}
       .story-controls{gap:5px}.story-controls button{padding:0 9px;min-height:39px;font-size:11px}
     }
-    @media(prefers-reduced-motion:reduce){.dino-walk,.dino-bob,.dino-leg-a,.dino-leg-b,.dino-tail,.dino-arm,.fire-core,.window-light,.star,.footprint{animation:none!important}}
+    @media(prefers-reduced-motion:reduce){.dino-walk,.dino-bob,.dino-leg-a,.dino-leg-b,.dino-tail,.dino-arm,.fire-core,.window-light,.star,{animation:none!important}}
 </style>
 </head>
 <body>
@@ -277,66 +275,109 @@
     return {pair:pairMap[roman]||roman,from,to,room};
   }
   function dinosaurScene(){
-    return `<div class="schedule-scene" aria-label="Динозавр пробегает по ночному городу и запрыгивает на крышу небоскрёба">
+    return `<div class="schedule-scene" aria-label="Детализированный ночной город и динозавр">
       <div class="scene-label">NIGHT CITY · 23СК</div>
-      <svg class="scene-svg" viewBox="0 0 760 270" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Детально нарисованный зелёный динозавр с красными шипами бежит, прыгает на небоскрёб и дышит огнём">
+      <svg class="scene-svg" viewBox="0 0 760 270" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Зелёный динозавр с рубиновыми шипами бежит по ночному городу и прыгает на небоскрёб">
         <defs>
-          <linearGradient id="skyDeep" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#1b2947"/><stop offset=".58" stop-color="#292641"/><stop offset="1" stop-color="#171d31"/></linearGradient>
-          <linearGradient id="towerGlass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7184a8"/><stop offset=".4" stop-color="#354969"/><stop offset="1" stop-color="#1a2944"/></linearGradient>
-          <linearGradient id="dinoSkin" x1="0" y1="0" x2=".2" y2="1"><stop stop-color="#70f2b4"/><stop offset=".42" stop-color="#25d58b"/><stop offset="1" stop-color="#07875d"/></linearGradient>
-          <linearGradient id="belly" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#a4f0b4"/><stop offset="1" stop-color="#4acb91"/></linearGradient>
-          <linearGradient id="flamePaint" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#fff2a3"/><stop offset=".38" stop-color="#ffbd58"/><stop offset=".75" stop-color="#ff744d"/><stop offset="1" stop-color="#f64c78"/></linearGradient>
-          <filter id="softGlow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-          <filter id="dinoShadow"><feGaussianBlur stdDeviation="3"/></filter>
+          <linearGradient id="skyDeep" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#172642"/><stop offset=".58" stop-color="#29243f"/><stop offset="1" stop-color="#121c30"/></linearGradient>
+          <linearGradient id="towerGlass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8295b8"/><stop offset=".28" stop-color="#405879"/><stop offset=".7" stop-color="#263a59"/><stop offset="1" stop-color="#15243e"/></linearGradient>
+          <linearGradient id="dinoSkin" x1="0" y1="0" x2=".25" y2="1"><stop stop-color="#8affc8"/><stop offset=".3" stop-color="#43e5a0"/><stop offset=".72" stop-color="#16b978"/><stop offset="1" stop-color="#08734f"/></linearGradient>
+          <linearGradient id="belly" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d0f5a8"/><stop offset="1" stop-color="#75d89a"/></linearGradient>
+          <linearGradient id="spike" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff9aab"/><stop offset=".38" stop-color="#f34f72"/><stop offset="1" stop-color="#a92250"/></linearGradient>
+          <linearGradient id="flamePaint" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#fff5b4"/><stop offset=".35" stop-color="#ffc45d"/><stop offset=".72" stop-color="#ff744b"/><stop offset="1" stop-color="#f34b75"/></linearGradient>
+          <linearGradient id="windows" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffe6a3"/><stop offset="1" stop-color="#d99a52"/></linearGradient>
+          <filter id="softGlow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="shadowBlur"><feGaussianBlur stdDeviation="5"/></filter>
+          <pattern id="glassGrid" width="20" height="22" patternUnits="userSpaceOnUse"><path d="M0 0V22M0 0H20" stroke="#a9c0df" stroke-opacity=".17" stroke-width="1"/></pattern>
         </defs>
         <rect width="760" height="270" fill="url(#skyDeep)"/>
-        <circle cx="658" cy="43" r="23" fill="#f6dfb1" opacity=".88"/><circle cx="670" cy="34" r="22" fill="#222842"/>
-        <g fill="#e6e8ff"><circle class="star" cx="65" cy="38" r="1.8"/><circle class="star" cx="155" cy="70" r="1.3"/><circle class="star" cx="275" cy="28" r="1.7"/><circle class="star" cx="425" cy="58" r="1.5"/><circle class="star" cx="718" cy="91" r="1.8"/></g>
-        <path d="M0 229V144h54v-48h58v133h35V129h67v100h44v-65h58v65h36v-96h61v96h34v-69h60v69h35V119h60v110h36v-77h64v77h58v41H0Z" fill="#111b30"/>
-        <g fill="#f4ca82" opacity=".82" class="window-light">
-          <path d="M15 166h7v12h-7zm18 0h7v12h-7zm35-50h7v12h-7zm18 0h7v12h-7zm81 31h7v12h-7zm18 0h7v12h-7zm92 32h7v12h-7zm18 0h7v12h-7zm99-45h7v12h-7zm18 0h7v12h-7zm93 27h7v12h-7zm18 0h7v12h-7z"/>
+        <circle cx="660" cy="42" r="23" fill="#f5dfb4" opacity=".9"/><circle cx="671" cy="33" r="22" fill="#222842"/>
+        <g fill="#e9ecff" opacity=".85"><circle cx="66" cy="37" r="1.8"/><circle cx="151" cy="68" r="1.2"/><circle cx="276" cy="27" r="1.6"/><circle cx="425" cy="57" r="1.5"/><circle cx="710" cy="88" r="1.7"/><circle cx="602" cy="35" r="1.2"/></g>
+        <!-- Distant skyline -->
+        <g fill="#17243b">
+          <path d="M0 228V148h40v-25h35v105Z"/><path d="M78 228V111h52v-33h34v150Z"/>
+          <path d="M180 228V135h67v-26h22v119Z"/><path d="M284 228V157h42v-43h53v114Z"/>
+          <path d="M394 228V129h44v-24h49v123Z"/><path d="M666 228V143h39v-22h55v107Z"/>
         </g>
+        <g fill="url(#windows)" opacity=".8">
+          <path d="M14 164h5v10h-5zm14 0h5v10h-5zm61-38h5v10h-5zm15 0h5v10h-5zm15 0h5v10h-5zm58 30h5v10h-5zm15 0h5v10h-5zm81 17h5v10h-5zm15 0h5v10h-5zm76-48h5v10h-5zm15 0h5v10h-5zm76 29h5v10h-5zm15 0h5v10h-5z"/>
+        </g>
+        <!-- Foreground office tower -->
         <g>
-          <path d="M520 270V79l43-43 43 43v191Z" fill="url(#towerGlass)" stroke="#8fa4ca" stroke-width="2.5"/>
-          <path d="M532 96h62M532 127h62M532 158h62M532 189h62M532 220h62M532 251h62" stroke="#f5ce85" stroke-width="4.5" stroke-linecap="round" opacity=".78"/>
-          <path d="M563 36V17" stroke="#f4d9a5" stroke-width="3" filter="url(#softGlow)"/>
-          <path d="M510 270h89" stroke="#a5b6d6" stroke-width="3"/>
-          <path d="M520 80l43-44 43 44" fill="none" stroke="#b4c5e5" stroke-width="2"/>
+          <path d="M520 270V78L563 34 606 78V270Z" fill="url(#towerGlass)" stroke="#a9bbd8" stroke-width="2.5"/>
+          <path d="M520 78L563 34 606 78" fill="none" stroke="#d5e0f3" stroke-width="3"/>
+          <path d="M526 83H600V269H526Z" fill="url(#glassGrid)" opacity=".85"/>
+          <path d="M531 95H595M531 126H595M531 157H595M531 188H595M531 219H595M531 250H595" stroke="#f2c982" stroke-width="4.5" stroke-linecap="round" opacity=".85"/>
+          <path d="M563 34V16" stroke="#e8d5aa" stroke-width="3" filter="url(#softGlow)"/>
+          <path d="M514 270H612" stroke="#b7c7df" stroke-width="3"/>
+          <path d="M530 84V260M596 84V260" stroke="#d1dff1" stroke-opacity=".22" stroke-width="2"/>
+          <path d="M536 101h8m-8 31h8m-8 31h8m-8 31h8m-8 31h8" stroke="#fff0c6" stroke-width="2" opacity=".5"/>
         </g>
-        <g fill="#d8a6d9" opacity=".48">
-          <g class="footprint"><ellipse cx="50" cy="244" rx="4" ry="7" transform="rotate(-25 50 244)"/><circle cx="44" cy="235" r="2"/><circle cx="50" cy="233" r="2"/><circle cx="56" cy="236" r="2"/></g>
-          <g class="footprint"><ellipse cx="102" cy="244" rx="4" ry="7" transform="rotate(20 102 244)"/><circle cx="96" cy="235" r="2"/><circle cx="102" cy="233" r="2"/><circle cx="108" cy="236" r="2"/></g>
-          <g class="footprint"><ellipse cx="154" cy="244" rx="4" ry="7" transform="rotate(-20 154 244)"/><circle cx="148" cy="235" r="2"/><circle cx="154" cy="233" r="2"/><circle cx="160" cy="236" r="2"/></g>
-        </g>
-        <ellipse class="jump-shadow" cx="220" cy="238" rx="60" ry="7" fill="#070d1b" filter="url(#dinoShadow)"/>
+        <!-- Street and reflected city lights -->
+        <path d="M0 258H760" stroke="#8392b2" stroke-width="2" opacity=".65"/>
+        <path d="M0 261H760V270H0Z" fill="#0b1425" opacity=".55"/>
+        <path d="M45 266h140m32 0h90m190 0h80" stroke="#c38cae" stroke-width="1" opacity=".18"/>
+        <ellipse class="jump-shadow" cx="205" cy="251" rx="47" ry="6" fill="#060c19" filter="url(#shadowBlur)"/>
+        <!-- Character rig: every limb is a separate animated shape -->
         <g class="dino-travel">
-          <g class="dino-rig" transform="translate(-120 112) scale(.48)">
+          <g transform="translate(-120 112) scale(.48)">
             <g class="dino-torso">
-              <g class="dino-tail"><path d="M370 222Q330 193 291 211Q309 233 342 242Q365 246 391 237Z" fill="url(#dinoSkin)" stroke="#087a58" stroke-width="5"/><path d="M307 215q22 7 39 17" fill="none" stroke="#9af4c5" stroke-width="4" opacity=".65" stroke-linecap="round"/></g>
-              <path d="M368 213Q383 168 441 174Q489 171 506 210Q518 248 476 269Q426 289 383 260Q356 244 368 213Z" fill="url(#dinoSkin)" stroke="#087a58" stroke-width="5"/>
-              <path d="M392 242Q438 263 492 233Q488 265 448 272Q410 274 392 242Z" fill="url(#belly)" opacity=".85"/>
-              <path d="M448 198Q454 153 494 132Q524 115 555 134Q577 149 563 180Q549 205 511 218L481 239Z" fill="url(#dinoSkin)" stroke="#087a58" stroke-width="5"/>
-              <g class="dino-head">
-                <path d="M520 142Q546 119 579 132Q606 143 605 165Q605 184 578 193L537 190Q514 177 520 142Z" fill="url(#dinoSkin)" stroke="#087a58" stroke-width="5"/>
-                <path d="M574 165Q614 159 632 179Q611 195 577 185Z" fill="#21c980" stroke="#087a58" stroke-width="4"/>
-                <path d="M546 179Q581 192 614 183" fill="none" stroke="#075c49" stroke-width="3" stroke-linecap="round"/>
-                <g class="dino-jaw"><path d="M572 183Q601 198 625 185Q616 209 586 205Q570 200 572 183Z" fill="#0c7959" stroke="#075c49" stroke-width="3"/><path d="M588 190l5 8 5-7 5 7" fill="#fff0d5"/></g>
-                <ellipse cx="562" cy="151" rx="9" ry="11" fill="#f7fff2"/><ellipse cx="565" cy="152" rx="4.5" ry="7" fill="#17243a"/><circle cx="566" cy="149" r="2" fill="#fff"/>
-                <path d="M538 139q12-12 25-8" fill="none" stroke="#b8ffd5" stroke-width="4" stroke-linecap="round" opacity=".8"/>
-                <circle cx="596" cy="170" r="2.5" fill="#087a58"/>
+              <!-- Tail -->
+              <g class="dino-tail">
+                <path d="M381 224Q343 198 311 207Q287 212 274 231Q305 250 344 246Q367 244 393 237Z" fill="url(#dinoSkin)" stroke="#087653" stroke-width="5"/>
+                <path d="M300 225Q331 222 355 235" fill="none" stroke="#a7ffd4" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+                <path d="M286 228l-7 3 8 5" fill="none" stroke="#087653" stroke-width="3"/>
               </g>
-              <path d="M388 194l-7-34 24 19 10-46 23 38 13-48 22 42 15-35 20 43" fill="#ef536d" stroke="#a92d54" stroke-width="4" stroke-linejoin="round"/>
-              <path d="M408 184l-3-15 12 10m27-23-2-17 12 22m26-14-1-16 12 22" fill="none" stroke="#ff9aa7" stroke-width="3" stroke-linecap="round"/>
-              <g class="dino-leg-a"><path d="M402 251Q388 276 396 302" fill="none" stroke="#0caa70" stroke-width="25" stroke-linecap="round"/><path d="M396 301q-18 8-29 1q7-14 25-12" fill="#087b59" stroke="#075c49" stroke-width="3"/></g>
-              <g class="dino-leg-b"><path d="M466 254Q482 277 474 302" fill="none" stroke="#0caa70" stroke-width="25" stroke-linecap="round"/><path d="M474 301q17 8 29 0q-8-14-27-11" fill="#087b59" stroke="#075c49" stroke-width="3"/></g>
-              <g class="dino-arm"><path d="M482 205Q506 190 529 207L541 226Q519 236 499 224" fill="#28d990" stroke="#087a58" stroke-width="4"/><path d="M529 219l9 3m-15 3 8 5" stroke="#eafff2" stroke-width="3" stroke-linecap="round"/></g>
-              <path d="M387 218q-7 8-3 16m8-18q-5 8-1 14" stroke="#c2ffdc" stroke-width="3" opacity=".65" fill="none"/>
+              <!-- Body and belly -->
+              <path d="M365 211Q373 174 416 169Q468 159 500 193Q523 222 500 253Q480 279 431 278Q388 276 367 249Q356 234 365 211Z" fill="url(#dinoSkin)" stroke="#087653" stroke-width="5"/>
+              <path d="M392 244Q433 264 492 231Q490 265 450 273Q412 278 392 244Z" fill="url(#belly)" stroke="#299c6d" stroke-width="2"/>
+              <path d="M408 250q9 8 20 9m8-7q10 8 21 7m8-10q9 6 18 3" fill="none" stroke="#4aa977" stroke-width="2" opacity=".65"/>
+              <!-- Neck -->
+              <path d="M453 202Q458 163 488 143Q520 122 550 141Q569 155 556 183Q543 207 509 222L477 239Z" fill="url(#dinoSkin)" stroke="#087653" stroke-width="5"/>
+              <!-- Head silhouette -->
+              <g class="dino-head">
+                <path d="M520 140Q542 119 572 128Q600 136 606 157Q611 178 588 190Q564 201 537 188Q515 176 520 140Z" fill="url(#dinoSkin)" stroke="#087653" stroke-width="5"/>
+                <path d="M572 161Q609 154 635 173Q641 179 630 185Q604 198 575 185Z" fill="#29d88b" stroke="#087653" stroke-width="4"/>
+                <path d="M575 181Q604 190 632 180" fill="none" stroke="#07543f" stroke-width="3" stroke-linecap="round"/>
+                <g class="dino-jaw"><path d="M579 184Q604 200 630 185Q624 207 597 207Q580 202 579 184Z" fill="#087451" stroke="#07543f" stroke-width="3"/><path d="M593 190l5 8 5-7 5 7" fill="#fff2d6"/></g>
+                <ellipse cx="566" cy="150" rx="10" ry="12" fill="#f8fff3"/><ellipse cx="569" cy="151" rx="5" ry="7" fill="#14233a"/><circle cx="571" cy="148" r="2.3" fill="#fff"/>
+                <path d="M548 137q13-11 27-6" fill="none" stroke="#c6ffdc" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="602" cy="169" r="2.5" fill="#087653"/>
+                <path d="M587 140q8 3 12 10" stroke="#8cf4be" stroke-width="2" fill="none" opacity=".7"/>
+              </g>
+              <!-- Layered, sculpted ruby-red dorsal spikes -->
+              <g stroke="#a72b52" stroke-width="3" stroke-linejoin="round">
+                <path d="M379 204L371 165Q385 174 394 190L403 148Q417 162 422 184L438 132Q452 151 455 179L473 142Q487 160 489 188L504 159Q516 176 516 197L496 210Z" fill="url(#spike)"/>
+                <path d="M383 190L377 170L392 190M408 177L404 153L420 182M441 168L440 139L452 174M475 174L481 149L487 183M501 190L511 167L512 194" fill="none" stroke="#ffb2bd" stroke-width="3" opacity=".85"/>
+                <path d="M390 196l-5-15m31-13-3-14m31 7 1-16m31 23 5-15" stroke="#ffe0df" stroke-width="2" opacity=".7"/>
+              </g>
+              <!-- Legs, individually articulated -->
+              <g class="dino-leg-a">
+                <path d="M403 250Q389 274 396 302" fill="none" stroke="#12ad72" stroke-width="25" stroke-linecap="round"/>
+                <path d="M396 301Q380 309 365 302Q367 292 386 292L401 296Z" fill="#087b57" stroke="#07543f" stroke-width="3"/>
+                <path d="M373 301l-7 2m18-5-5 5" stroke="#a2f4c3" stroke-width="2" stroke-linecap="round"/>
+              </g>
+              <g class="dino-leg-b">
+                <path d="M466 251Q482 276 474 302" fill="none" stroke="#0d9867" stroke-width="25" stroke-linecap="round"/>
+                <path d="M474 301Q491 310 508 301Q505 291 485 292L470 296Z" fill="#086c4f" stroke="#07543f" stroke-width="3"/>
+                <path d="M500 301l7 2m-19-5 5 5" stroke="#a2f4c3" stroke-width="2" stroke-linecap="round"/>
+              </g>
+              <!-- Tiny forearm -->
+              <g class="dino-arm">
+                <path d="M485 207Q507 190 530 207L541 225Q521 239 500 224Z" fill="#39df96" stroke="#087653" stroke-width="4"/>
+                <path d="M527 219l10 4m-15 2 8 5" stroke="#e4ffe9" stroke-width="3" stroke-linecap="round"/>
+              </g>
+              <path d="M385 218q-7 8-3 16m9-18q-5 8-1 14" stroke="#d0ffe0" stroke-width="3" opacity=".55" fill="none"/>
             </g>
-            <g class="flame"><path d="M615 164Q652 132 694 153Q677 161 682 180Q659 164 635 184Q643 170 615 164Z" fill="url(#flamePaint)" filter="url(#softGlow)"/><path d="M620 165Q651 147 674 157Q657 166 662 174Q644 164 620 165Z" fill="#fff2a3"/><circle class="flame-spark" cx="682" cy="148" r="5" fill="#ffcf70"/><circle class="flame-spark" cx="665" cy="190" r="3.5" fill="#ff8559"/></g>
+            <!-- Fire breath -->
+            <g class="flame">
+              <path d="M617 163Q648 133 695 150Q681 158 684 177Q662 162 638 184Q643 169 617 163Z" fill="url(#flamePaint)" filter="url(#softGlow)"/>
+              <path d="M620 164Q651 147 676 156Q660 165 664 174Q645 164 620 164Z" fill="#fff4b1"/>
+              <circle class="flame-spark" cx="684" cy="148" r="5" fill="#ffcf70"/><circle class="flame-spark" cx="667" cy="190" r="3.5" fill="#ff8559"/>
+            </g>
           </g>
         </g>
-        <g fill="#ffb96d"><circle class="star" cx="683" cy="115" r="2.8"/><circle class="star" cx="706" cy="143" r="2"/><circle class="star" cx="650" cy="103" r="2.2"/></g>
-        <path d="M0 259H760" stroke="#7b8cac" stroke-width="2" opacity=".6"/>
+        <g fill="#ffc77d" opacity=".9"><circle cx="684" cy="115" r="2.8"/><circle cx="707" cy="142" r="2"/><circle cx="650" cy="102" r="2.2"/></g>
       </svg>
     </div>`;
   }
