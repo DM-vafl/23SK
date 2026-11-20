@@ -1,0 +1,10 @@
+{
+  "name": "23СК — Замены",
+  "short_name": "23СК",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fff6fa",
+  "theme_color": "#f2a9c6",
+  "description": "Замены расписания для группы 23СК",
+  "icons": [{"src":"./icon.svg","sizes":"any","type":"image/svg+xml"}]
+}
