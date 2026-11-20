@@ -143,33 +143,41 @@
     .photo-frame{border-color:#302b46;background:#171e32}.story-count{color:#d3a4cf}
     .story-text,.final-note p{color:#d0c4dc}.final-note{border-color:#51415e;background:#211e35}
     .dot-page{background:#655275}.dot-page.active{background:#ef8eae}
-    .dino-walk{animation:dino-walk 10s ease-in-out infinite}
-    .dino-bob{animation:dino-bob 0.62s ease-in-out infinite alternate}
-    .dino-leg-a{transform-box:fill-box;transform-origin:50% 0;animation:leg-step .62s ease-in-out infinite alternate}
-    .dino-leg-b{transform-box:fill-box;transform-origin:50% 0;animation:leg-step .62s ease-in-out infinite alternate-reverse}
-    .dino-tail{transform-box:fill-box;transform-origin:100% 50%;animation:tail-sway 1.4s ease-in-out infinite alternate}
-    .dino-arm{transform-box:fill-box;transform-origin:20% 80%;animation:reach 1.6s ease-in-out infinite alternate}
-    .fire-core{transform-box:fill-box;transform-origin:0 50%;animation:fire-pulse .45s ease-in-out infinite alternate}
+    .dino-travel{animation:dino-journey 12s cubic-bezier(.45,0,.25,1) infinite;transform-box:view-box}
+    .dino-torso{transform-box:fill-box;transform-origin:50% 70%;animation:body-bounce .62s ease-in-out infinite alternate}
+    .dino-leg-a,.dino-leg-b{transform-box:fill-box;transform-origin:50% 8%;animation:run-leg .62s ease-in-out infinite alternate}
+    .dino-leg-b{animation-delay:-.31s}
+    .dino-tail{transform-box:fill-box;transform-origin:100% 55%;animation:tail-swish 1.25s ease-in-out infinite alternate}
+    .dino-head{transform-box:fill-box;transform-origin:18% 72%;animation:head-nod 2.4s ease-in-out infinite}
+    .dino-jaw{transform-box:fill-box;transform-origin:0 0;animation:jaw-open 3.8s ease-in-out infinite}
+    .dino-arm{transform-box:fill-box;transform-origin:15% 80%;animation:arm-swing .8s ease-in-out infinite alternate}
+    .flame{transform-box:fill-box;transform-origin:0 50%;animation:fire-breathe .42s ease-in-out infinite alternate}
+    .flame-spark{animation:spark-drift 1.3s ease-out infinite}
     .window-light{animation:window-flicker 3.8s ease-in-out infinite alternate}
     .star{animation:star-twinkle 2.5s ease-in-out infinite alternate}
     .footprint{animation:track-glow 2.8s ease-in-out infinite}
-    @keyframes dino-walk{
-      0%,8%{transform:translate(0px,0px)}
-      28%{transform:translate(125px,0px)}
-      42%{transform:translate(205px,-3px)}
-      55%{transform:translate(310px,-108px)}
-      68%{transform:translate(310px,-108px)}
-      82%{transform:translate(205px,-3px)}
-      100%{transform:translate(0px,0px)}
+    .jump-shadow{transform-box:fill-box;transform-origin:center;animation:shadow-jump 12s ease-in-out infinite}
+    @keyframes dino-journey{
+      0%,7%{transform:translate(0px,0px)}
+      22%{transform:translate(115px,0px)}
+      30%{transform:translate(150px,-3px)}
+      40%{transform:translate(290px,-125px)}
+      49%,58%{transform:translate(290px,-125px)}
+      70%{transform:translate(185px,-5px)}
+      84%,100%{transform:translate(0px,0px)}
     }
-    @keyframes dino-bob{from{transform:translateY(0)}to{transform:translateY(-3px)}}
-    @keyframes leg-step{from{transform:rotate(-18deg)}to{transform:rotate(20deg)}}
-    @keyframes tail-sway{from{transform:rotate(-5deg)}to{transform:rotate(7deg)}}
-    @keyframes reach{from{transform:rotate(-8deg)}to{transform:rotate(18deg)}}
-    @keyframes fire-pulse{from{opacity:.55;transform:scale(.72)}to{opacity:1;transform:scale(1.08)}}
+    @keyframes body-bounce{from{transform:translateY(0) rotate(-1deg)}to{transform:translateY(-5px) rotate(1deg)}}
+    @keyframes run-leg{from{transform:rotate(-24deg)}to{transform:rotate(27deg)}}
+    @keyframes tail-swish{from{transform:rotate(-8deg)}to{transform:rotate(9deg)}}
+    @keyframes head-nod{0%,70%,100%{transform:rotate(0)}80%{transform:rotate(-7deg)}90%{transform:rotate(4deg)}}
+    @keyframes jaw-open{0%,22%,100%{transform:rotate(0)}28%,42%{transform:rotate(16deg)}}
+    @keyframes arm-swing{from{transform:rotate(-12deg)}to{transform:rotate(15deg)}}
+    @keyframes fire-breathe{from{opacity:.45;scale:.82  .9}to{opacity:1;scale:1.12 1.08}}
+    @keyframes spark-drift{0%{opacity:0;transform:translate(0,0) scale(.5)}25%{opacity:1}100%{opacity:0;transform:translate(28px,-17px) scale(0)}}
     @keyframes window-flicker{from{opacity:.55}to{opacity:1}}
     @keyframes star-twinkle{from{opacity:.2}to{opacity:1}}
     @keyframes track-glow{0%,100%{opacity:.22}50%{opacity:.75}}
+    @keyframes shadow-jump{0%,28%,84%,100%{transform:scaleX(1);opacity:.35}40%,58%{transform:scaleX(.55);opacity:.16}70%{transform:scaleX(.9);opacity:.28}}
     @media(max-width:650px){
       .page{width:min(100% - 24px,540px);padding-top:16px}.top{margin-bottom:15px}
       .hero{grid-template-columns:1fr;gap:15px;padding:22px;border-radius:22px}
@@ -268,53 +276,66 @@
     return {pair:pairMap[roman]||roman,from,to,room};
   }
   function dinosaurScene(){
-    return `<div class="schedule-scene" aria-label="Динозавр бежит и запрыгивает на небоскрёб">
+    return `<div class="schedule-scene" aria-label="Динозавр пробегает по ночному городу и запрыгивает на крышу небоскрёба">
       <div class="scene-label">NIGHT CITY · 23СК</div>
-      <svg class="scene-svg" viewBox="0 0 760 330" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Маленький зелёный динозавр с красными шипами бежит по ночному городу и прыгает на небоскрёб">
+      <svg class="scene-svg" viewBox="0 0 760 270" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Детально нарисованный зелёный динозавр с красными шипами бежит, прыгает на небоскрёб и дышит огнём">
         <defs>
-          <linearGradient id="sceneSky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#202d4b"/><stop offset="1" stop-color="#30223e"/></linearGradient>
-          <linearGradient id="glassTower" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#506184"/><stop offset=".5" stop-color="#293955"/><stop offset="1" stop-color="#19263f"/></linearGradient>
-          <linearGradient id="dinoGreen" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#48eaa2"/><stop offset="1" stop-color="#07965f"/></linearGradient>
-          <linearGradient id="flameGrad" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#ffd36b"/><stop offset=".45" stop-color="#ff874d"/><stop offset="1" stop-color="#ff456f"/></linearGradient>
-          <filter id="sceneGlow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <linearGradient id="skyDeep" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#1b2947"/><stop offset=".58" stop-color="#292641"/><stop offset="1" stop-color="#171d31"/></linearGradient>
+          <linearGradient id="towerGlass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7184a8"/><stop offset=".4" stop-color="#354969"/><stop offset="1" stop-color="#1a2944"/></linearGradient>
+          <linearGradient id="dinoSkin" x1="0" y1="0" x2=".2" y2="1"><stop stop-color="#70f2b4"/><stop offset=".42" stop-color="#25d58b"/><stop offset="1" stop-color="#07875d"/></linearGradient>
+          <linearGradient id="belly" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#a4f0b4"/><stop offset="1" stop-color="#4acb91"/></linearGradient>
+          <linearGradient id="flamePaint" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#fff2a3"/><stop offset=".38" stop-color="#ffbd58"/><stop offset=".75" stop-color="#ff744d"/><stop offset="1" stop-color="#f64c78"/></linearGradient>
+          <filter id="softGlow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="dinoShadow"><feGaussianBlur stdDeviation="3"/></filter>
         </defs>
-        <rect width="760" height="330" fill="url(#sceneSky)"/>
-        <circle cx="625" cy="53" r="26" fill="#f2d8a4" opacity=".9"/><circle cx="638" cy="43" r="25" fill="#202d49"/>
-        <g fill="#e5eaff"><circle class="star" cx="62" cy="45" r="2"/><circle class="star" cx="145" cy="83" r="1.5"/><circle class="star" cx="300" cy="40" r="2"/><circle class="star" cx="470" cy="65" r="1.6"/><circle class="star" cx="705" cy="112" r="1.7"/></g>
-        <path d="M0 275V180h58v-48h55v143h38V164h62v111h43V202h48v73h39V150h65v125h35V190h58v85h34V120h54v155h42V170h58v105h31v55H0Z" fill="#121e33"/>
-        <g fill="#f6c978" class="window-light"><path d="M18 199h7v13h-7zm17 0h7v13h-7zm33-50h7v13h-7zm18 0h7v13h-7zm89 29h7v13h-7zm19 0h7v13h-7zm73 39h7v13h-7zm17 0h7v13h-7zm94-54h7v13h-7zm18 0h7v13h-7zm87 37h7v13h-7zm18 0h7v13h-7z"/></g>
+        <rect width="760" height="270" fill="url(#skyDeep)"/>
+        <circle cx="658" cy="43" r="23" fill="#f6dfb1" opacity=".88"/><circle cx="670" cy="34" r="22" fill="#222842"/>
+        <g fill="#e6e8ff"><circle class="star" cx="65" cy="38" r="1.8"/><circle class="star" cx="155" cy="70" r="1.3"/><circle class="star" cx="275" cy="28" r="1.7"/><circle class="star" cx="425" cy="58" r="1.5"/><circle class="star" cx="718" cy="91" r="1.8"/></g>
+        <path d="M0 229V144h54v-48h58v133h35V129h67v100h44v-65h58v65h36v-96h61v96h34v-69h60v69h35V119h60v110h36v-77h64v77h58v41H0Z" fill="#111b30"/>
+        <g fill="#f4ca82" opacity=".82" class="window-light">
+          <path d="M15 166h7v12h-7zm18 0h7v12h-7zm35-50h7v12h-7zm18 0h7v12h-7zm81 31h7v12h-7zm18 0h7v12h-7zm92 32h7v12h-7zm18 0h7v12h-7zm99-45h7v12h-7zm18 0h7v12h-7zm93 27h7v12h-7zm18 0h7v12h-7z"/>
+        </g>
         <g>
-          <path d="M515 330V92l38-44 38 44v238Z" fill="url(#glassTower)" stroke="#8799bc" stroke-width="2"/>
-          <path d="M525 113h56M525 144h56M525 175h56M525 206h56M525 237h56M525 268h56M525 299h56" stroke="#f3c979" stroke-width="5" stroke-linecap="round" opacity=".78"/>
-          <path d="M553 47V19" stroke="#f5d8a0" stroke-width="3" filter="url(#sceneGlow)"/>
-          <path d="M507 330h92" stroke="#91a5c7" stroke-width="3"/>
+          <path d="M520 270V79l43-43 43 43v191Z" fill="url(#towerGlass)" stroke="#8fa4ca" stroke-width="2.5"/>
+          <path d="M532 96h62M532 127h62M532 158h62M532 189h62M532 220h62M532 251h62" stroke="#f5ce85" stroke-width="4.5" stroke-linecap="round" opacity=".78"/>
+          <path d="M563 36V17" stroke="#f4d9a5" stroke-width="3" filter="url(#softGlow)"/>
+          <path d="M510 270h89" stroke="#a5b6d6" stroke-width="3"/>
+          <path d="M520 80l43-44 43 44" fill="none" stroke="#b4c5e5" stroke-width="2"/>
         </g>
-        <g fill="#d2a0d6" opacity=".55">
-          <g class="footprint"><ellipse cx="75" cy="293" rx="4" ry="7" transform="rotate(-25 75 293)"/><circle cx="69" cy="284" r="2"/><circle cx="75" cy="282" r="2"/><circle cx="81" cy="285" r="2"/></g>
-          <g class="footprint"><ellipse cx="145" cy="293" rx="4" ry="7" transform="rotate(20 145 293)"/><circle cx="139" cy="284" r="2"/><circle cx="145" cy="282" r="2"/><circle cx="151" cy="285" r="2"/></g>
-          <g class="footprint"><ellipse cx="215" cy="293" rx="4" ry="7" transform="rotate(-20 215 293)"/><circle cx="209" cy="284" r="2"/><circle cx="215" cy="282" r="2"/><circle cx="221" cy="285" r="2"/></g>
+        <g fill="#d8a6d9" opacity=".48">
+          <g class="footprint"><ellipse cx="50" cy="244" rx="4" ry="7" transform="rotate(-25 50 244)"/><circle cx="44" cy="235" r="2"/><circle cx="50" cy="233" r="2"/><circle cx="56" cy="236" r="2"/></g>
+          <g class="footprint"><ellipse cx="102" cy="244" rx="4" ry="7" transform="rotate(20 102 244)"/><circle cx="96" cy="235" r="2"/><circle cx="102" cy="233" r="2"/><circle cx="108" cy="236" r="2"/></g>
+          <g class="footprint"><ellipse cx="154" cy="244" rx="4" ry="7" transform="rotate(-20 154 244)"/><circle cx="148" cy="235" r="2"/><circle cx="154" cy="233" r="2"/><circle cx="160" cy="236" r="2"/></g>
         </g>
-        <g class="dino-walk">
-          <g transform="translate(0 155) scale(.52)">
-            <g class="dino-bob">
-              <g class="dino-tail"><path d="M370 223Q326 190 288 213Q313 247 371 245Z" fill="url(#dinoGreen)" stroke="#087a58" stroke-width="4"/></g>
-              <ellipse cx="423" cy="224" rx="66" ry="46" fill="url(#dinoGreen)" stroke="#087a58" stroke-width="4"/>
-              <path d="M444 207Q457 162 497 151Q527 145 546 167Q562 188 538 211L492 238Z" fill="url(#dinoGreen)" stroke="#087a58" stroke-width="4"/>
-              <ellipse cx="540" cy="154" rx="43" ry="31" fill="url(#dinoGreen)" stroke="#087a58" stroke-width="4"/>
-              <path d="M568 154Q598 150 608 170Q588 187 557 177" fill="#20c77d" stroke="#087a58" stroke-width="3"/>
-              <circle cx="550" cy="144" r="5" fill="#102039"/><circle cx="551" cy="142" r="1.5" fill="#fff"/>
-              <path d="M389 195l-7-28 22 17 8-38 19 32 12-39 20 34 15-28 17 33" fill="#ed4762" stroke="#a92d54" stroke-width="3" stroke-linejoin="round"/>
-              <g class="dino-leg-a"><path d="M410 259q-12 20-7 38" stroke="#0bbd77" stroke-width="18" stroke-linecap="round"/><path d="M403 297l-14 4" stroke="#086e51" stroke-width="6" stroke-linecap="round"/></g>
-              <g class="dino-leg-b"><path d="M456 259q10 18 4 34" stroke="#0bbd77" stroke-width="18" stroke-linecap="round"/><path d="M460 293l12 3" stroke="#086e51" stroke-width="6" stroke-linecap="round"/></g>
-              <g class="dino-arm"><path d="M474 204q29-5 43 14l-17 17q-17-13-34-9" fill="#21d58b" stroke="#087a58" stroke-width="4" stroke-linejoin="round"/></g>
-              <path d="M519 175q14 9 25 3" stroke="#075c49" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <ellipse class="jump-shadow" cx="220" cy="238" rx="60" ry="7" fill="#070d1b" filter="url(#dinoShadow)"/>
+        <g class="dino-travel">
+          <g class="dino-rig" transform="translate(-120 47) scale(.48)">
+            <g class="dino-torso">
+              <g class="dino-tail"><path d="M370 222Q330 193 291 211Q309 233 342 242Q365 246 391 237Z" fill="url(#dinoSkin)" stroke="#087a58" stroke-width="5"/><path d="M307 215q22 7 39 17" fill="none" stroke="#9af4c5" stroke-width="4" opacity=".65" stroke-linecap="round"/></g>
+              <path d="M368 213Q383 168 441 174Q489 171 506 210Q518 248 476 269Q426 289 383 260Q356 244 368 213Z" fill="url(#dinoSkin)" stroke="#087a58" stroke-width="5"/>
+              <path d="M392 242Q438 263 492 233Q488 265 448 272Q410 274 392 242Z" fill="url(#belly)" opacity=".85"/>
+              <path d="M448 198Q454 153 494 132Q524 115 555 134Q577 149 563 180Q549 205 511 218L481 239Z" fill="url(#dinoSkin)" stroke="#087a58" stroke-width="5"/>
+              <g class="dino-head">
+                <path d="M520 142Q546 119 579 132Q606 143 605 165Q605 184 578 193L537 190Q514 177 520 142Z" fill="url(#dinoSkin)" stroke="#087a58" stroke-width="5"/>
+                <path d="M574 165Q614 159 632 179Q611 195 577 185Z" fill="#21c980" stroke="#087a58" stroke-width="4"/>
+                <path d="M546 179Q581 192 614 183" fill="none" stroke="#075c49" stroke-width="3" stroke-linecap="round"/>
+                <g class="dino-jaw"><path d="M572 183Q601 198 625 185Q616 209 586 205Q570 200 572 183Z" fill="#0c7959" stroke="#075c49" stroke-width="3"/><path d="M588 190l5 8 5-7 5 7" fill="#fff0d5"/></g>
+                <ellipse cx="562" cy="151" rx="9" ry="11" fill="#f7fff2"/><ellipse cx="565" cy="152" rx="4.5" ry="7" fill="#17243a"/><circle cx="566" cy="149" r="2" fill="#fff"/>
+                <path d="M538 139q12-12 25-8" fill="none" stroke="#b8ffd5" stroke-width="4" stroke-linecap="round" opacity=".8"/>
+                <circle cx="596" cy="170" r="2.5" fill="#087a58"/>
+              </g>
+              <path d="M388 194l-7-34 24 19 10-46 23 38 13-48 22 42 15-35 20 43" fill="#ef536d" stroke="#a92d54" stroke-width="4" stroke-linejoin="round"/>
+              <path d="M408 184l-3-15 12 10m27-23-2-17 12 22m26-14-1-16 12 22" fill="none" stroke="#ff9aa7" stroke-width="3" stroke-linecap="round"/>
+              <g class="dino-leg-a"><path d="M402 251Q388 276 396 302" fill="none" stroke="#0caa70" stroke-width="25" stroke-linecap="round"/><path d="M396 301q-18 8-29 1q7-14 25-12" fill="#087b59" stroke="#075c49" stroke-width="3"/></g>
+              <g class="dino-leg-b"><path d="M466 254Q482 277 474 302" fill="none" stroke="#0caa70" stroke-width="25" stroke-linecap="round"/><path d="M474 301q17 8 29 0q-8-14-27-11" fill="#087b59" stroke="#075c49" stroke-width="3"/></g>
+              <g class="dino-arm"><path d="M482 205Q506 190 529 207L541 226Q519 236 499 224" fill="#28d990" stroke="#087a58" stroke-width="4"/><path d="M529 219l9 3m-15 3 8 5" stroke="#eafff2" stroke-width="3" stroke-linecap="round"/></g>
+              <path d="M387 218q-7 8-3 16m8-18q-5 8-1 14" stroke="#c2ffdc" stroke-width="3" opacity=".65" fill="none"/>
             </g>
-            <g class="fire-core"><path d="M603 160q38-34 84-7q-22 7-23 30q-25-19-61-8Z" fill="url(#flameGrad)" filter="url(#sceneGlow)"/><path d="M610 164q26-18 51-8q-17 8-17 20q-16-13-34-12Z" fill="#ffe18b"/></g>
+            <g class="flame"><path d="M615 164Q652 132 694 153Q677 161 682 180Q659 164 635 184Q643 170 615 164Z" fill="url(#flamePaint)" filter="url(#softGlow)"/><path d="M620 165Q651 147 674 157Q657 166 662 174Q644 164 620 165Z" fill="#fff2a3"/><circle class="flame-spark" cx="682" cy="148" r="5" fill="#ffcf70"/><circle class="flame-spark" cx="665" cy="190" r="3.5" fill="#ff8559"/></g>
           </g>
-          <animateTransform attributeName="transform" type="translate" values="0 0;125 0;205 -3;310 -108;310 -108;205 -3;0 0" keyTimes="0;.18;.38;.55;.68;.84;1" dur="10s" repeatCount="indefinite"/>
         </g>
-        <g fill="#ffb765"><circle class="star" cx="673" cy="119" r="3"/><circle class="star" cx="696" cy="145" r="2"/><circle class="star" cx="645" cy="105" r="2.5"/></g>
-        <path d="M0 316H760" stroke="#6b789b" stroke-width="2" opacity=".65"/>
+        <g fill="#ffb96d"><circle class="star" cx="683" cy="115" r="2.8"/><circle class="star" cx="706" cy="143" r="2"/><circle class="star" cx="650" cy="103" r="2.2"/></g>
+        <path d="M0 259H760" stroke="#7b8cac" stroke-width="2" opacity=".6"/>
       </svg>
     </div>`;
   }
