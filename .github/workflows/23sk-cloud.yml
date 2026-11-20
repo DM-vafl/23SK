@@ -1,6 +1,11 @@
 name: 23SK cloud monitor and Pages
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - '.github/workflows/23sk-cloud.yml'
   schedule:
     # Every 5 minutes, offset from the top of the hour to reduce queue delays.
     - cron: '2-59/5 * * * *'
