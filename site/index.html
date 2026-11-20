@@ -97,7 +97,7 @@
     @media(max-width:370px){.page{width:calc(100% - 20px)}.brand-mark{width:39px;height:39px;border-radius:13px}.brand-name{font-size:14px}.brand-sub{font-size:10px}.top .pill{max-width:118px;white-space:normal;text-align:center;line-height:1.25}.hero{padding:18px}.hero h1{font-size:29px}.hero p{font-size:13px}.stat-value{font-size:15px}.section-head h2{font-size:16px}.status{font-size:10px;padding:6px 8px}.story{max-height:94dvh;border-radius:20px}.story-body{padding:12px}.photo-frame{height:min(40dvh,300px);min-height:165px}.story-controls{gap:5px}.story-controls button{padding:0 9px;min-height:39px;font-size:11px}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
   
-    /* Unified night-city schedule panel */
+    /* Polished night-city schedule card */
     :root{color-scheme:dark;--ink:#e9e7f4;--muted:#a8aec6;--line:#35415d;--shadow:0 22px 60px #05091488}
     html{background:#0b1020}
     body{color:var(--ink);background:radial-gradient(ellipse at 12% 0%,#263552 0,transparent 38rem),radial-gradient(ellipse at 92% 18%,#38263f 0,transparent 35rem),linear-gradient(180deg,#0b1020,#11192b 58%,#171629)}
@@ -116,14 +116,14 @@
     .status.wait{border-color:#554466;background:#282139;color:#cbb0df}
     .panel{overflow:hidden;border-radius:24px;background:linear-gradient(145deg,#121d32,#1b2038 68%,#241d35)}
     .panel-inner{padding:0}
-    .schedule-world{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,1.05fr);min-height:300px;isolation:isolate}
-    .schedule-data{position:relative;z-index:2;min-width:0;padding:25px 22px 24px}
-    .schedule-data:after{content:"";position:absolute;z-index:-1;inset:0 -80px 0 0;background:linear-gradient(90deg,#151f34 0%,#151f34f5 70%,#151f3400 100%);pointer-events:none}
-    .schedule-scene{position:relative;min-width:0;min-height:300px;overflow:hidden;background:linear-gradient(155deg,#202b47,#30223e 75%,#171c31)}
-    .schedule-scene:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 20%,#f4c98a22,transparent 24%),linear-gradient(0deg,#111a2e 0%,transparent 55%);z-index:1;pointer-events:none}
-    .scene-label{position:absolute;z-index:3;right:16px;top:15px;color:#d7b9df;font-size:9px;font-weight:900;letter-spacing:.16em}
-    .scene-svg{position:absolute;inset:0;width:100%;height:100%;min-height:300px}
-    .change-list{display:grid;gap:10px;list-style:none;padding:0;margin:16px 0 0}
+    .schedule-world{display:flex;flex-direction:column;min-width:0}
+    .schedule-scene{position:relative;order:0;width:100%;height:230px;min-height:0;overflow:hidden;background:linear-gradient(155deg,#202b47,#30223e 75%,#171c31)}
+    .schedule-scene:after{content:"";position:absolute;inset:auto 0 0;height:38px;background:linear-gradient(0deg,#121b30aa,transparent);pointer-events:none}
+    .scene-label{position:absolute;z-index:3;right:17px;top:14px;color:#d7b9df;font-size:9px;font-weight:900;letter-spacing:.16em}
+    .scene-svg{display:block;width:100%;height:100%}
+    .schedule-data{order:1;position:relative;z-index:2;min-width:0;padding:19px 22px 22px;background:linear-gradient(135deg,#151f34,#1b2038)}
+    .schedule-data:before{content:"";position:absolute;left:22px;right:22px;top:0;height:1px;background:linear-gradient(90deg,transparent,#5d5277,transparent)}
+    .change-list{display:grid;gap:10px;list-style:none;padding:0;margin:14px 0 0}
     .change-item{padding:13px 14px;border:1px solid #3e4965;border-radius:15px;background:linear-gradient(125deg,#202c43,#24243c)}
     .change-top{display:flex;align-items:center;gap:8px;margin-bottom:8px}
     .change-num{display:inline-flex;align-items:center;justify-content:center;padding:5px 9px;border-radius:9px;background:#40304f;color:#e4c2ed;font-size:11px;font-weight:850}
@@ -131,7 +131,7 @@
     .change-text{color:#e3e2ef;font-size:14px;line-height:1.55;overflow-wrap:anywhere}
     .change-text strong{color:#fff0bf;font-weight:850}
     .change-room{margin-top:8px;color:#b7c1d9;font-size:11px;font-weight:750}
-    .empty{text-align:left;padding:20px 0 4px}.empty-symbol{background:#342b49;color:#dba4cb}
+    .empty{text-align:left;padding:14px 0 2px}.empty-symbol{background:#342b49;color:#dba4cb}
     .empty p{margin:0;color:#adb4cc;font-size:12px;line-height:1.65}
     .love-card{border-color:#55405e;background:linear-gradient(115deg,#1b263e,#29213d 70%,#302039);box-shadow:0 12px 30px #05091466}
     .love-icon{background:linear-gradient(145deg,#bd85cf,#e779a2)}
@@ -143,25 +143,33 @@
     .photo-frame{border-color:#302b46;background:#171e32}.story-count{color:#d3a4cf}
     .story-text,.final-note p{color:#d0c4dc}.final-note{border-color:#51415e;background:#211e35}
     .dot-page{background:#655275}.dot-page.active{background:#ef8eae}
-    .dino-body{transform-origin:510px 222px;animation:dino-bob 4.8s ease-in-out infinite}
-    .dino-legs{transform-origin:500px 250px;animation:climb-legs 1.15s ease-in-out infinite}
-    .dino-tail{transform-origin:445px 215px;animation:tail-sway 3.8s ease-in-out infinite}
-    .dino-arm{transform-origin:530px 218px;animation:reach 2.3s ease-in-out infinite}
-    .fire-core{transform-origin:648px 175px;animation:fire-pulse .8s ease-in-out infinite alternate}
-    .footprint{animation:track-glow 3.5s ease-in-out infinite}
-    .footprint:nth-of-type(2n){animation-delay:1.2s}
-    .window-light{animation:window-flicker 4.5s ease-in-out infinite alternate}
-    .window-light:nth-child(3n){animation-delay:1.4s}
-    .star{animation:star-twinkle 3s ease-in-out infinite alternate}
-    @keyframes dino-bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-5px) rotate(-1deg)}}
-    @keyframes climb-legs{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(8deg)}}
-    @keyframes tail-sway{0%,100%{transform:rotate(0)}50%{transform:rotate(-7deg)}}
-    @keyframes reach{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(13deg)}}
-    @keyframes fire-pulse{from{opacity:.55;transform:scale(.78) translateX(0)}to{opacity:1;transform:scale(1.12) translateX(7px)}}
-    @keyframes track-glow{0%,100%{opacity:.25}50%{opacity:.8}}
-    @keyframes window-flicker{0%,80%,100%{opacity:.65}88%{opacity:1}}
-    @keyframes star-twinkle{from{opacity:.25}to{opacity:1}}
-    .scene-ground{stroke:#6b789b;stroke-width:2;opacity:.65}
+    .dino-walk{animation:dino-walk 10s ease-in-out infinite}
+    .dino-bob{animation:dino-bob 0.62s ease-in-out infinite alternate}
+    .dino-leg-a{transform-box:fill-box;transform-origin:50% 0;animation:leg-step .62s ease-in-out infinite alternate}
+    .dino-leg-b{transform-box:fill-box;transform-origin:50% 0;animation:leg-step .62s ease-in-out infinite alternate-reverse}
+    .dino-tail{transform-box:fill-box;transform-origin:100% 50%;animation:tail-sway 1.4s ease-in-out infinite alternate}
+    .dino-arm{transform-box:fill-box;transform-origin:20% 80%;animation:reach 1.6s ease-in-out infinite alternate}
+    .fire-core{transform-box:fill-box;transform-origin:0 50%;animation:fire-pulse .45s ease-in-out infinite alternate}
+    .window-light{animation:window-flicker 3.8s ease-in-out infinite alternate}
+    .star{animation:star-twinkle 2.5s ease-in-out infinite alternate}
+    .footprint{animation:track-glow 2.8s ease-in-out infinite}
+    @keyframes dino-walk{
+      0%,8%{transform:translate(0px,0px)}
+      28%{transform:translate(125px,0px)}
+      42%{transform:translate(205px,-3px)}
+      55%{transform:translate(310px,-108px)}
+      68%{transform:translate(310px,-108px)}
+      82%{transform:translate(205px,-3px)}
+      100%{transform:translate(0px,0px)}
+    }
+    @keyframes dino-bob{from{transform:translateY(0)}to{transform:translateY(-3px)}}
+    @keyframes leg-step{from{transform:rotate(-18deg)}to{transform:rotate(20deg)}}
+    @keyframes tail-sway{from{transform:rotate(-5deg)}to{transform:rotate(7deg)}}
+    @keyframes reach{from{transform:rotate(-8deg)}to{transform:rotate(18deg)}}
+    @keyframes fire-pulse{from{opacity:.55;transform:scale(.72)}to{opacity:1;transform:scale(1.08)}}
+    @keyframes window-flicker{from{opacity:.55}to{opacity:1}}
+    @keyframes star-twinkle{from{opacity:.2}to{opacity:1}}
+    @keyframes track-glow{0%,100%{opacity:.22}50%{opacity:.75}}
     @media(max-width:650px){
       .page{width:min(100% - 24px,540px);padding-top:16px}.top{margin-bottom:15px}
       .hero{grid-template-columns:1fr;gap:15px;padding:22px;border-radius:22px}
@@ -171,11 +179,9 @@
       .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:11px 0 18px}
       .stat{padding:12px}.stat:last-child{grid-column:1/-1}
       .section-head{align-items:center}.section-head h2{font-size:17px}
-      .schedule-world{grid-template-columns:1fr;min-height:0}
-      .schedule-scene{grid-row:1;min-height:180px;height:180px}
-      .scene-svg{min-height:180px}
-      .schedule-data{grid-row:2;padding:17px 15px 18px}
-      .schedule-data:after{display:none}
+      .schedule-scene{height:185px}
+      .schedule-data{padding:16px 15px 18px}
+      .schedule-data:before{left:15px;right:15px}
       .scene-label{right:12px;top:10px;font-size:8px}
       .change-text{font-size:13px}
       .love-card{align-items:flex-start;flex-wrap:wrap;padding:14px;gap:11px}
@@ -188,15 +194,13 @@
       .top .pill{max-width:118px;white-space:normal;text-align:center;line-height:1.25}
       .hero{padding:18px}.hero h1{font-size:29px}.hero p{font-size:13px}
       .stat-value{font-size:15px}.section-head h2{font-size:16px}
-      .status{font-size:10px;padding:6px 8px}.schedule-scene{height:160px;min-height:160px}
-      .scene-svg{min-height:160px}.story{max-height:94dvh;border-radius:20px}
-      .story-body{padding:12px}.photo-frame{height:min(40dvh,300px);min-height:165px}
+      .status{font-size:10px;padding:6px 8px}.schedule-scene{height:165px}
+      .story{max-height:94dvh;border-radius:20px}.story-body{padding:12px}
+      .photo-frame{height:min(40dvh,300px);min-height:165px}
       .story-controls{gap:5px}.story-controls button{padding:0 9px;min-height:39px;font-size:11px}
     }
-    @media(prefers-reduced-motion:reduce){.dino-body,.dino-legs,.dino-tail,.dino-arm,.fire-core,.footprint,.window-light,.star{animation:none!important}}
-
-
-  </style>
+    @media(prefers-reduced-motion:reduce){.dino-walk,.dino-bob,.dino-leg-a,.dino-leg-b,.dino-tail,.dino-arm,.fire-core,.window-light,.star,.footprint{animation:none!important}}
+</style>
 </head>
 <body>
   <div class="hearts-bg" id="heartsBg" aria-hidden="true"></div>
@@ -264,51 +268,53 @@
     return {pair:pairMap[roman]||roman,from,to,room};
   }
   function dinosaurScene(){
-    return `<div class="schedule-scene" aria-label="Динозавр карабкается по ночному небоскрёбу">
+    return `<div class="schedule-scene" aria-label="Динозавр бежит и запрыгивает на небоскрёб">
       <div class="scene-label">NIGHT CITY · 23СК</div>
-      <svg class="scene-svg" viewBox="0 0 760 330" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Зелёный динозавр с красными шипами дышит огнём на фоне ночного города">
+      <svg class="scene-svg" viewBox="0 0 760 330" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Маленький зелёный динозавр с красными шипами бежит по ночному городу и прыгает на небоскрёб">
         <defs>
           <linearGradient id="sceneSky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#202d4b"/><stop offset="1" stop-color="#30223e"/></linearGradient>
           <linearGradient id="glassTower" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#506184"/><stop offset=".5" stop-color="#293955"/><stop offset="1" stop-color="#19263f"/></linearGradient>
-          <linearGradient id="dinoGreen" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#37e69a"/><stop offset="1" stop-color="#07965f"/></linearGradient>
+          <linearGradient id="dinoGreen" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#48eaa2"/><stop offset="1" stop-color="#07965f"/></linearGradient>
           <linearGradient id="flameGrad" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#ffd36b"/><stop offset=".45" stop-color="#ff874d"/><stop offset="1" stop-color="#ff456f"/></linearGradient>
-          <filter id="sceneGlow"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="sceneGlow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
         </defs>
         <rect width="760" height="330" fill="url(#sceneSky)"/>
         <circle cx="625" cy="53" r="26" fill="#f2d8a4" opacity=".9"/><circle cx="638" cy="43" r="25" fill="#202d49"/>
         <g fill="#e5eaff"><circle class="star" cx="62" cy="45" r="2"/><circle class="star" cx="145" cy="83" r="1.5"/><circle class="star" cx="300" cy="40" r="2"/><circle class="star" cx="470" cy="65" r="1.6"/><circle class="star" cx="705" cy="112" r="1.7"/></g>
         <path d="M0 275V180h58v-48h55v143h38V164h62v111h43V202h48v73h39V150h65v125h35V190h58v85h34V120h54v155h42V170h58v105h31v55H0Z" fill="#121e33"/>
-        <g fill="#f6c978" class="window-light">
-          <path d="M18 199h7v13h-7zm17 0h7v13h-7zm33-50h7v13h-7zm18 0h7v13h-7zm89 29h7v13h-7zm19 0h7v13h-7zm73 39h7v13h-7zm17 0h7v13h-7zm94-54h7v13h-7zm18 0h7v13h-7zm87 37h7v13h-7zm18 0h7v13h-7z"/>
-        </g>
+        <g fill="#f6c978" class="window-light"><path d="M18 199h7v13h-7zm17 0h7v13h-7zm33-50h7v13h-7zm18 0h7v13h-7zm89 29h7v13h-7zm19 0h7v13h-7zm73 39h7v13h-7zm17 0h7v13h-7zm94-54h7v13h-7zm18 0h7v13h-7zm87 37h7v13h-7zm18 0h7v13h-7z"/></g>
         <g>
           <path d="M515 330V92l38-44 38 44v238Z" fill="url(#glassTower)" stroke="#8799bc" stroke-width="2"/>
           <path d="M525 113h56M525 144h56M525 175h56M525 206h56M525 237h56M525 268h56M525 299h56" stroke="#f3c979" stroke-width="5" stroke-linecap="round" opacity=".78"/>
           <path d="M553 47V19" stroke="#f5d8a0" stroke-width="3" filter="url(#sceneGlow)"/>
           <path d="M507 330h92" stroke="#91a5c7" stroke-width="3"/>
         </g>
-        <g class="footprints" fill="#d2a0d6" opacity=".48">
-          <ellipse class="footprint" cx="112" cy="286" rx="5" ry="9" transform="rotate(-25 112 286)"/><circle cx="104" cy="275" r="2.5"/><circle cx="111" cy="273" r="2.5"/><circle cx="118" cy="276" r="2.5"/>
-          <ellipse class="footprint" cx="174" cy="265" rx="5" ry="9" transform="rotate(20 174 265)"/><circle cx="167" cy="253" r="2.5"/><circle cx="174" cy="252" r="2.5"/><circle cx="181" cy="255" r="2.5"/>
-          <ellipse class="footprint" cx="235" cy="285" rx="5" ry="9" transform="rotate(-20 235 285)"/><circle cx="228" cy="273" r="2.5"/><circle cx="235" cy="272" r="2.5"/><circle cx="242" cy="275" r="2.5"/>
+        <g fill="#d2a0d6" opacity=".55">
+          <g class="footprint"><ellipse cx="75" cy="293" rx="4" ry="7" transform="rotate(-25 75 293)"/><circle cx="69" cy="284" r="2"/><circle cx="75" cy="282" r="2"/><circle cx="81" cy="285" r="2"/></g>
+          <g class="footprint"><ellipse cx="145" cy="293" rx="4" ry="7" transform="rotate(20 145 293)"/><circle cx="139" cy="284" r="2"/><circle cx="145" cy="282" r="2"/><circle cx="151" cy="285" r="2"/></g>
+          <g class="footprint"><ellipse cx="215" cy="293" rx="4" ry="7" transform="rotate(-20 215 293)"/><circle cx="209" cy="284" r="2"/><circle cx="215" cy="282" r="2"/><circle cx="221" cy="285" r="2"/></g>
         </g>
-        <g class="dino-body">
-          <g class="dino-tail"><path d="M370 223Q326 190 288 213Q313 247 371 245Z" fill="url(#dinoGreen)" stroke="#087a58" stroke-width="4"/></g>
-          <ellipse cx="423" cy="224" rx="66" ry="46" fill="url(#dinoGreen)" stroke="#087a58" stroke-width="4"/>
-          <path d="M444 207Q457 162 497 151Q527 145 546 167Q562 188 538 211L492 238Z" fill="url(#dinoGreen)" stroke="#087a58" stroke-width="4"/>
-          <ellipse cx="540" cy="154" rx="43" ry="31" fill="url(#dinoGreen)" stroke="#087a58" stroke-width="4"/>
-          <path d="M568 154Q598 150 608 170Q588 187 557 177" fill="#20c77d" stroke="#087a58" stroke-width="3"/>
-          <circle cx="550" cy="144" r="5" fill="#102039"/><circle cx="551" cy="142" r="1.5" fill="#fff"/>
-          <path d="M389 195l-7-28 22 17 8-38 19 32 12-39 20 34 15-28 17 33" fill="#ed4762" stroke="#a92d54" stroke-width="3" stroke-linejoin="round"/>
-          <path d="M410 259q-12 20-7 38m53-34q10 18 4 34" stroke="#0bbd77" stroke-width="18" stroke-linecap="round"/>
-          <path d="M395 297l-14 4m78-2 12 3" stroke="#086e51" stroke-width="6" stroke-linecap="round"/>
-          <g class="dino-arm"><path d="M474 204q29-5 43 14l-17 17q-17-13-34-9" fill="#21d58b" stroke="#087a58" stroke-width="4" stroke-linejoin="round"/></g>
-          <path d="M519 175q14 9 25 3" stroke="#075c49" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <g class="dino-walk">
+          <g transform="translate(0 155) scale(.52)">
+            <g class="dino-bob">
+              <g class="dino-tail"><path d="M370 223Q326 190 288 213Q313 247 371 245Z" fill="url(#dinoGreen)" stroke="#087a58" stroke-width="4"/></g>
+              <ellipse cx="423" cy="224" rx="66" ry="46" fill="url(#dinoGreen)" stroke="#087a58" stroke-width="4"/>
+              <path d="M444 207Q457 162 497 151Q527 145 546 167Q562 188 538 211L492 238Z" fill="url(#dinoGreen)" stroke="#087a58" stroke-width="4"/>
+              <ellipse cx="540" cy="154" rx="43" ry="31" fill="url(#dinoGreen)" stroke="#087a58" stroke-width="4"/>
+              <path d="M568 154Q598 150 608 170Q588 187 557 177" fill="#20c77d" stroke="#087a58" stroke-width="3"/>
+              <circle cx="550" cy="144" r="5" fill="#102039"/><circle cx="551" cy="142" r="1.5" fill="#fff"/>
+              <path d="M389 195l-7-28 22 17 8-38 19 32 12-39 20 34 15-28 17 33" fill="#ed4762" stroke="#a92d54" stroke-width="3" stroke-linejoin="round"/>
+              <g class="dino-leg-a"><path d="M410 259q-12 20-7 38" stroke="#0bbd77" stroke-width="18" stroke-linecap="round"/><path d="M403 297l-14 4" stroke="#086e51" stroke-width="6" stroke-linecap="round"/></g>
+              <g class="dino-leg-b"><path d="M456 259q10 18 4 34" stroke="#0bbd77" stroke-width="18" stroke-linecap="round"/><path d="M460 293l12 3" stroke="#086e51" stroke-width="6" stroke-linecap="round"/></g>
+              <g class="dino-arm"><path d="M474 204q29-5 43 14l-17 17q-17-13-34-9" fill="#21d58b" stroke="#087a58" stroke-width="4" stroke-linejoin="round"/></g>
+              <path d="M519 175q14 9 25 3" stroke="#075c49" stroke-width="3" fill="none" stroke-linecap="round"/>
+            </g>
+            <g class="fire-core"><path d="M603 160q38-34 84-7q-22 7-23 30q-25-19-61-8Z" fill="url(#flameGrad)" filter="url(#sceneGlow)"/><path d="M610 164q26-18 51-8q-17 8-17 20q-16-13-34-12Z" fill="#ffe18b"/></g>
+          </g>
+          <animateTransform attributeName="transform" type="translate" values="0 0;125 0;205 -3;310 -108;310 -108;205 -3;0 0" keyTimes="0;.18;.38;.55;.68;.84;1" dur="10s" repeatCount="indefinite"/>
         </g>
-        <path class="fire-core" d="M603 160q38-34 84-7q-22 7-23 30q-25-19-61-8Z" fill="url(#flameGrad)" filter="url(#sceneGlow)"/>
-        <path d="M610 164q26-18 51-8q-17 8-17 20q-16-13-34-12Z" fill="#ffe18b" opacity=".95" filter="url(#sceneGlow)"/>
         <g fill="#ffb765"><circle class="star" cx="673" cy="119" r="3"/><circle class="star" cx="696" cy="145" r="2"/><circle class="star" cx="645" cy="105" r="2.5"/></g>
-        <path class="scene-ground" d="M0 316H760"/>
+        <path d="M0 316H760" stroke="#6b789b" stroke-width="2" opacity=".65"/>
       </svg>
     </div>`;
   }
