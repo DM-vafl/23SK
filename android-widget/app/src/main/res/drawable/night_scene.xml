@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="100dp"
+    android:viewportWidth="360"
+    android:viewportHeight="100">
+    <path android:fillColor="#18243D" android:pathData="M0,0h360v100h-360z"/>
+    <path android:fillColor="#111A2E" android:pathData="M0,100V58h28V42h24v58h18V51h31v49h18V36h26v64h20V53h32v47h18V29h28v71h19V48h28v52z"/>
+    <path android:fillColor="#F5C77B" android:fillAlpha="0.7" android:pathData="M9,65h4v7h-4zM19,65h4v7h-4zM82,59h4v7h-4zM92,59h4v7h-4zM125,45h4v7h-4zM136,45h4v7h-4zM185,62h4v7h-4zM196,62h4v7h-4zM247,39h4v7h-4zM258,39h4v7h-4zM301,59h4v7h-4z"/>
+    <path android:fillColor="#344766" android:strokeColor="#8192B4" android:strokeWidth="1.5" android:pathData="M275,100V22l17,-17 17,17v78z"/>
+    <path android:strokeColor="#F7C879" android:strokeWidth="3" android:strokeLineCap="round" android:pathData="M282,34h20M282,47h20M282,60h20M282,73h20M282,86h20"/>
+    <path android:fillColor="#08D17A" android:strokeColor="#047B58" android:strokeWidth="1.5" android:pathData="M125,70c-17,-12 -28,-8 -38,0 10,9 21,12 37,9 7,12 25,15 40,6 12,0 20,-8 18,-18 -2,-9 -13,-14 -25,-12 -8,-11 -24,-12 -34,-3z"/>
+    <path android:fillColor="#08D17A" android:strokeColor="#047B58" android:strokeWidth="1.5" android:pathData="M159,57c4,-17 17,-23 31,-17 8,4 12,13 8,21 -6,9 -20,10 -39,7z"/>
+    <path android:fillColor="#FF405D" android:pathData="M111,62l-2,-15 11,9 4,-17 10,14 8,-15 9,17 8,-12 8,15z"/>
+    <path android:fillColor="#13233B" android:pathData="M187,44a2,2 0,1 0,4 0a2,2 0,1 0,-4 0"/>
+    <path android:strokeColor="#08D17A" android:strokeWidth="7" android:strokeLineCap="round" android:pathData="M132,81l-4,13M157,82l5,11"/>
+    <path android:fillColor="#FF8B4A" android:pathData="M198,56c14,-13 24,-7 32,-2 -11,1 -13,8 -22,9z"/>
+    <path android:fillColor="#FFD16A" android:pathData="M200,57c8,-8 14,-4 18,-2 -6,1 -8,4 -13,5z"/>
+    <path android:fillColor="#F5D9A5" android:pathData="M330,18a11,11 0,1 0,22 0a11,11 0,1 0,-22 0"/>
+</vector>
