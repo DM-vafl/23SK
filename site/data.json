@@ -1,14 +1,12 @@
 {
   "version": 1,
   "group": "23СК",
-  "status": "has_changes",
-  "date_label": "21.11.2026",
-  "file_name": "21.11.2026.docx",
-  "file_modified": "2026-11-20T12:46:34+00:00",
-  "published_at": "2026-11-20T13:56:57Z",
-  "count": 1,
-  "lines": [
-    "II | 23ск | Шитикова В. А. / (Физическая культура) | Пуговкина А. П. / (Основы финансовой грамотности) | 303"
-  ],
+  "status": "no_changes",
+  "date_label": "23.11.2026",
+  "file_name": "23.11.2026.docx",
+  "file_modified": "2026-11-22T10:16:05+00:00",
+  "published_at": "2026-11-22T10:17:44Z",
+  "count": 0,
+  "lines": [],
   "document_preview": ""
 }
